@@ -18,7 +18,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= $base_url; ?>dashboard" aria-expanded="false">
+              <a class="sidebar-link" href="<?= $base_url; ?>main" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -30,7 +30,7 @@
               <span class="hide-menu">Data</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="<?= $base_url; ?>data_group" aria-expanded="false">
+              <a class="sidebar-link" href="<?= $base_url; ?>group_telegram" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -58,7 +58,7 @@
               <span class="hide-menu">Aplikasi</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="../content/dashboard.php" aria-expanded="false">
+              <a class="sidebar-link" href="<?= $base_url; ?>menu" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>

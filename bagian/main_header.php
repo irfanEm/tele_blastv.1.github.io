@@ -1,6 +1,6 @@
 <?php
 session_start();
-  $base_url = "http://localhost/tele_blast/";
+  $base_url = "http://localhost/tele_blastv.1.github.io/";
 if (isset($_SESSION["error"])){
   echo "error : " . $_SESSION["error"];
 }
