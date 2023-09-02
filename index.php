@@ -13,7 +13,7 @@
           $url= parseURL();
           // var_dump($url);
         if (isset($url) && $url != null){
-          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan"];
+          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu"];
           if( in_array($url, $menu) )
           {
 

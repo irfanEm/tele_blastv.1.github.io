@@ -1,10 +1,13 @@
 <!-- awal container -->
-<div class="container-fluid">
+<div class="container-fluid" id="container_form" style="display: none;">
     <div class="card shadow">
         <div class="card-body">
 
           <!-- form input -->
-          <h5 class="card-title fw-semibold mb-4">Forms Input Template Pesan</h5>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Forms Input Template Pesan</h5>
+            <button type="button" class="btn-close" aria-label="Close" onclick="sembunyikanForm();"></button>
+          </div>
           <div class="card">
             <div class="card-body">
               <form>
@@ -34,7 +37,7 @@
         <div class="card-body">
           <!-- kontent utama -->
           <div class="d-flex my-2">
-            <button class="btn btn-success m-1 justify-content-end me-0">Tambah Template Pesan</button>
+            <button class="btn btn-success m-1 justify-content-end me-0" onclick="tampilForm();">Tambah Template Pesan</button>
           </div>
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">

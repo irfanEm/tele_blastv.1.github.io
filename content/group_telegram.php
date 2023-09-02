@@ -1,26 +1,38 @@
+<?php
+  if (isset($_POST['tambah']))
+  {
+    $nama_group = $_POST['nama_group'] ? $_POST['nama_group'] : '';
+    $id_group = $_POST['id_group'] ? $_POST['id_group'] : '';
+    $username_group = $_POST['username_group'] ? $_POST['username_group'] : '';
+    var_dump($nama_group, $id_group, $username_group);
+  }
+?>
 <!-- awal container -->
-<div class="container-fluid">
+<div class="container-fluid" id="container_form" style="display: none;">
     <div class="card shadow">
         <div class="card-body">
 
           <!-- form input -->
-          <h5 class="card-title fw-semibold mb-4">Forms Input Group Telegram</h5>
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Forms Input Group Telegram</h5>
+            <button type="button" class="btn-close" aria-label="Close" onclick="sembunyikanForm();"></button>
+          </div>
           <div class="card">
             <div class="card-body">
-              <form>
+              <form action="" method="post">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nama Group</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="nama_group" class="form-label">Nama Group</label>
+                  <input type="text" name="nama_group" class="form-control" id="nama_group">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">ID Group</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <label for="id_group" class="form-label">ID Group</label>
+                  <input type="text" name="id_group" class="form-control" id="id_group">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Username Group</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <label for="username_group" class="form-label">Username Group</label>
+                  <input type="text" name="username_group" class="form-control" id="username_group">
                 </div>
-                <button type="submit" class="btn btn-success">Tambah</button>
+                <button type="submit" name="tambah" class="btn btn-success">Tambah</button>
               </form>
             </div>
           </div>
@@ -37,7 +49,7 @@
 
           <!-- kontent utama -->
           <div class="d-flex my-2">
-            <button class="btn btn-success m-1 justify-content-end me-0">Tambah Group</button>
+            <button class="btn btn-success m-1 justify-content-end me-0" onclick="tampilForm();">Tambah Group</button>
           </div>
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
