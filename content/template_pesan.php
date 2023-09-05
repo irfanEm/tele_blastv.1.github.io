@@ -1,3 +1,25 @@
+<?php
+  // jika tombol tambah diklik
+  if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
+  {
+    // tangkap data dari form input dan kondisikan jika data kosong
+    $judul_pesan = $_POST['judul_pesan'] ? $_POST['judul_pesan'] : '';
+    $isi_pesan = $_POST['isi_pesan'] ? $_POST['isi_pesan'] : '';
+
+    // debuging input form
+    // var_dump($judul_pesan, $isi_pesan);
+    $stmtinsert = "INSERT INTO template_pesan VALUES (null, '$judul_pesan', '$isi_pesan')";
+    $exec = mysqli_query($konek, $stmtinsert); var_dump($exec);
+
+    $_POST['tambah'] = 0;
+  }
+
+
+  $stmtshow = "SELECT * FROM template_pesan order by id DESC";
+  $exec = mysqli_query($konek, $stmtshow);
+  
+?>
+
 <!-- awal container -->
 <div class="container-fluid" id="container_form" style="display: none;">
     <div class="card shadow">
@@ -10,10 +32,10 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <form>
+              <form action="" method="post">
                 <div class="mb-3">
                   <label for="judul_pesan" class="form-label">Judul Pesan</label>
-                  <input type="email" name="judul_pesan" class="form-control" id="judul_pesan" aria-describedby="emailHelp">
+                  <input type="text" name="judul_pesan" class="form-control" id="judul_pesan" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="isi_pesan" class="form-label">Isi Pesan</label>
@@ -21,7 +43,7 @@
 
                   </textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Tambah</button>
+                <button type="submit" class="btn btn-success" name="tambah" value="1">Tambah</button>
               </form>
             </div>
           </div>
@@ -36,8 +58,8 @@
     <div class="card shadow">
         <div class="card-body">
           <!-- kontent utama -->
-          <div class="d-flex my-2">
-            <button class="btn btn-success m-1 justify-content-end me-0" onclick="tampilForm();">Tambah Template Pesan</button>
+          <div class="d-flex justify-content-end my-2">
+            <button class="btn btn-success btn-sm rounded rounded-pill m-1" onclick="tampilForm();">Tambah Template Pesan</button>
           </div>
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
@@ -50,7 +72,7 @@
                     <thead class="text-dark fs-4">
                       <tr>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Id</h6>
+                          <h6 class="fw-semibold mb-0">#</h6>
                         </th>
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Judul Pesan</h6>
@@ -64,21 +86,40 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <?php
+                        $i = 1;
+                        while ( $data = mysqli_fetch_array($exec) ) {
+                      ?>
                       <tr>
                         <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">1</h6>
+                          <h6 class="fw-semibold mb-0"><?= $i; ?></h6>
                         </td>
                         <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
-                          <span class="fw-normal">Web Designer</span>
+                          <h6 class="fw-normal mb-1"><?= $data['judul_pesan']; ?></h6>
                         </td>
                         <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">Elite Admin</p>
+                          <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  lihat detail
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                  <?= $data['isi_pesan']; ?>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <h6 class="mb-0 fw-normal"><?= $data['isi_pesan']; ?></h6> -->
                         </td>
                         <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                          <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-warning rounded rounded-pill">edit</a>
+                          <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-danger rounded rounded-pill">hapus</a>
                         </td>
                       </tr>
+                      <?php  $i++; }  ?>
                     </tbody>
                   </table>
                 </div>

@@ -3,7 +3,7 @@
 $token = "6556939785:AAEc1b9Nk4BR1Pk48heWikKzhqBfUNHH1bM"; // token bot
  
 $data = [
-    'text' =>"oke makasih sudah boleh testing 🙂 dan mohon maaf mengganggu 🙏.",
+    'text' =>"punten",
     'chat_id' => '-1001177007534'  //contoh bot, group id -1001177007534
 ];
  

@@ -1,3 +1,12 @@
+<?php
+// dapatkan data template pesan
+$sdata_pesan = "SELECT * FROM template_pesan";
+$xdata_pesan = mysqli_query($konek, $sdata_pesan);
+// dapatkan data group 
+$sdata_group = "SELECT * FROM group_tele";
+$xdata_group = mysqli_query($konek, $sdata_group);
+
+?>
 <!-- awal container -->
 <div class="container-fluid" id="container_form" style="display: none;">
     <div class="card shadow">
@@ -10,36 +19,41 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <form>
+              <form action="" method="post">
                 <div class="mb-3">
                     <label for="pesan" class="form-label">Pilih Pesan</label>
-                    <select id="pesan" class="form-select">
-                        <option>Pilih Pesan</option>
-                        <option>Pesan Contoh 1</option>
-                        <option>Pesan Contoh 2</option>
-                        <option>Pesan Contoh 3</option>
+                    <select id="pesan" name="pesan" class="form-select">
+                      <?php
+                      $h = 1;
+                      while ( $data_pesan = mysqli_fetch_array( $xdata_pesan ) )
+                      {
+                      ?>
+                        <option value="<?= $data_pesan['id']; ?>"><?= $data_pesan['judul_pesan']; ?></option>
+                      <?php $h++; } ?>
                     </select>
                 </div>
                 <div class="mb-3">
+                    <label for="tanggal" class="form-label">Tanggal</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal"> 
+                </div>
+                <div class="mb-3">
+                    <label for="waktu" class="form-label">Waktu</label>
+                    <input type="time" class="form-control" id="waktu" name="waktu"> 
+                </div>
+                <div class="mb-3">
                     <label for="pesan" class="form-label">Pilih Group Telegram</label>
+                    <?php 
+                      $l = 1;
+                      while ( $data_group = mysqli_fetch_array($xdata_group) )
+                      {
+                      ?>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="group_tele">
+                        <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele" value="<?= $data_group['id']; ?>">
                         <label class="form-check-label" for="group_tele">
-                        Group Tele 1
+                        <?= $data_group['nama']; ?>
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="group_tele">
-                        <label class="form-check-label" for="group_tele">
-                        Group Tele 2
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="group_tele">
-                        <label class="form-check-label" for="group_tele">
-                        Group Tele 3
-                        </label>
-                    </div>
+                    <?php $l++; } ?>
                 </div>
                 <button type="submit" class="btn btn-success">Bc Pesan</button>
               </form>

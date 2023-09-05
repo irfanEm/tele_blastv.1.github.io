@@ -1,4 +1,5 @@
 <?php
+require_once 'config/koneksi.php';
   require_once 'bagian/main_header.php';
   require_once "bagian/aside.php";
 ?>
