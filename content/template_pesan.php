@@ -15,6 +15,16 @@
   }
 
 
+  // hapus template pesan
+  if ( isset( $_POST['id_hapus'] ) )
+  {
+    $id = $_POST['id_hapus'];
+    $stmthps = "DELETE FROM template_pesan WHERE id = $id";
+    // var_dump($stmthps);
+    $xstmthps = mysqli_query($konek, $stmthps);
+  }
+
+
   $stmtshow = "SELECT * FROM template_pesan order by id DESC";
   $exec = mysqli_query($konek, $stmtshow);
   
@@ -101,12 +111,12 @@
                           <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                               <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width: 30em;">
                                   lihat detail
                                 </button>
                               </h2>
                               <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body text-wrap" style="width: 30em;">
                                   <?= $data['isi_pesan']; ?>
                                 </div>
                               </div>
@@ -115,8 +125,13 @@
                           <!-- <h6 class="mb-0 fw-normal"><?= $data['isi_pesan']; ?></h6> -->
                         </td>
                         <td class="border-bottom-0">
-                          <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-warning rounded rounded-pill">edit</a>
-                          <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-danger rounded rounded-pill">hapus</a>
+                          <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-warning rounded rounded-pill mb-1">edit</a>
+                          <form action="" method="post">
+                            <input type="hidden" name="id_hapus" value="<?= $data['id']; ?>">
+                            <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-1" onclick="return confirm('kamu yakin ?');">
+                              hapus
+                            </button>
+                          </form>
                         </td>
                       </tr>
                       <?php  $i++; }  ?>

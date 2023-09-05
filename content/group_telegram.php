@@ -15,6 +15,15 @@
     $_POST['tambah'] = 0;
   }
 
+  // fungsi hapus 
+  if ( isset( $_POST['id_hapus'] ) )
+  {
+    $id = $_POST['id_hapus'];
+    $stmthps = "DELETE FROM group_tele WHERE id = $id";
+    // var_dump($stmthps);
+    $xstmthps = mysqli_query($konek, $stmthps);
+  }
+
 
   $stmtshow = "SELECT * FROM group_tele order by id DESC";
   $exec = mysqli_query($konek, $stmtshow);
@@ -69,7 +78,7 @@
               <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">
                   Group Telegram
-                  <?php var_dump($_GET['id']); ?>
+                  <?php //var_dump($_GET['id']); ?>
                 </h5>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
@@ -111,8 +120,13 @@
                           <h6 class="mb-0 fw-normal"><?= $data['username_group']; ?></h6>
                         </td>
                         <td class="border-bottom-0">
-                            <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-warning rounded rounded-pill">edit</a>
-                            <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-danger rounded rounded-pill">hapus</a>
+                            <a href="?id=<?= $data['id']; ?>" class="btn btn-sm btn-warning rounded rounded-pill mb-1">edit</a>
+                            <form action="" method="post">
+                              <input type="hidden" name="id_hapus" value="<?= $data['id']; ?>">
+                              <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-1" onclick="return confirm('kamu yakin ?');">
+                                hapus
+                              </button>
+                            </form>
                         </td>
                         </td>
                       </tr>
