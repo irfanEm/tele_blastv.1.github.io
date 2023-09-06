@@ -1,5 +1,7 @@
 <?php
-require_once 'config/koneksi.php';
+  require_once 'config/koneksi.php';
+  require_once 'function/function.php';
+  require_once 'function/insert_data.php';
   require_once 'bagian/main_header.php';
   require_once "bagian/aside.php";
 ?>
@@ -10,7 +12,6 @@ require_once 'config/koneksi.php';
     ?>
     <div class="container-fluid">
         <?php
-        include "function/function.php";
           $url= parseURL();
           // var_dump($url);
         if (isset($url) && $url != null){

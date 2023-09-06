@@ -2,17 +2,16 @@
   // jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
-    // tangkap data dari form input dan kondisikan jika data kosong
-    $nama_group = $_POST['nama_group'] ? $_POST['nama_group'] : '';
-    $id_group = $_POST['id_group'] ? $_POST['id_group'] : '';
-    $username_group = $_POST['username_group'] ? $_POST['username_group'] : '';
+    $nama_group = $_POST['nama_group']; $id_group = $_POST['id_group']; $username_group = $_POST['username_group']; $table = "group_tele";
+    $data = array(
+      "nama_group" => "$nama_group",
+      "id_group" => "$id_group",
+      "username_group" => "$username_group",
+      "table" => "$table",
+    );
 
-    // debuging input form
-    var_dump($nama_group, $id_group, $username_group);
-    $stmtinsert = "INSERT INTO group_tele VALUES (null, '$nama_group', '$id_group', '$username_group')";
-    $exec = mysqli_query($konek, $stmtinsert); var_dump($exec);
-
-    $_POST['tambah'] = 0;
+    $test = insert($data);
+    var_dump($test);
   }
 
   // fungsi hapus 
