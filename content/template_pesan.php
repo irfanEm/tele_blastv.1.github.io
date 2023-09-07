@@ -2,16 +2,15 @@
   // jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
-    // tangkap data dari form input dan kondisikan jika data kosong
-    $judul_pesan = $_POST['judul_pesan'] ? $_POST['judul_pesan'] : '';
-    $isi_pesan = $_POST['isi_pesan'] ? $_POST['isi_pesan'] : '';
+    //inisialisasi data 
+    $judul_pesan = $_POST['judul_pesan']; $isi_pesan = $_POST['isi_pesan']; $table = "template_pesan";
+    $data = array(
+      "judul_pesan" => "$judul_pesan",
+      "isi_pesan" => "$isi_pesan",
+      "table" => "$table",
+    );
 
-    // debuging input form
-    // var_dump($judul_pesan, $isi_pesan);
-    $stmtinsert = "INSERT INTO template_pesan VALUES (null, '$judul_pesan', '$isi_pesan')";
-    $exec = mysqli_query($konek, $stmtinsert); var_dump($exec);
-
-    $_POST['tambah'] = 0;
+    insert($data);
   }
 
 

@@ -1,7 +1,8 @@
 <?php
-  // jika tombol tambah diklik
+  //jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
+    tambahData();
     $nama_group = $_POST['nama_group']; $id_group = $_POST['id_group']; $username_group = $_POST['username_group']; $table = "group_tele";
     $data = array(
       "nama_group" => "$nama_group",
@@ -11,7 +12,7 @@
     );
 
     $test = insert($data);
-    var_dump($test);
+    //var_dump($test);
   }
 
   // fungsi hapus 

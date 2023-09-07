@@ -1,9 +1,16 @@
 <?php
-  require_once 'config/koneksi.php';
-  require_once 'function/function.php';
-  require_once 'function/insert_data.php';
-  require_once 'bagian/main_header.php';
-  require_once "bagian/aside.php";
+  require_once __DIR__ . "/config/koneksi.php";
+  require_once __DIR__ . "/function/function.php";
+  require_once __DIR__ . "/function/insert_data.php";
+  require_once __DIR__ . "/function/hapus_data.php";
+  require_once __DIR__ . "/bagian/main_header.php";
+  require_once __DIR__ . "/bagian/aside.php";
+  require_once __DIR__ . "/Model/Pesan.php";
+  require_once __DIR__ . "/Model/Group.php";
+  require_once __DIR__ . "/Model/DataBc.php";
+  require_once __DIR__ . "/BusinessLogic/tambahData.php";  
+  require_once __DIR__ . "/BusinessLogic/editData.php";  
+  require_once __DIR__ . "/BusinessLogic/hapusData.php";
 ?>
   <div class="body-wrapper">
     <?php
@@ -29,5 +36,5 @@
   </div>
 
 <?php
-  require_once 'bagian/main_footer.php';
+  require_once __DIR__ . "/bagian/main_footer.php";
 ?>
