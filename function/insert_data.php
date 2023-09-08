@@ -6,7 +6,7 @@ function insert($data)
     switch ($data['table']) {
         case("group_tele"):
             $stmt = "INSERT INTO $data[table] VALUES (null, '$data[nama_group]', '$data[id_group]', '$data[username_group]')";
-            var_dump($data['table']);
+            var_dump($stmt);
             break;
 
         case("bc_pesan"):

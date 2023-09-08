@@ -17,23 +17,15 @@ if ( isset( $_POST['bc_pesan'] ) )
   $group = implode(', ', $group);  $data = array ( "id_pesan" => "$pesan", "id_group" => "$group", "tanggal" => "$tanggal", "waktu" => "$waktu", "table" => "$table");
 
   $result = insert($data);
-  var_dump($result);
 }
 
 // fungsi hapus
 if ( isset( $_POST['id_hapus'] ) )
 {
   $table = "bc_pesan";
-  $data = array(
-    "table" => $table,
-    "id" => $id = $_POST['id_hapus'],
-  );
-
+  $data = array("table" => $table, "id" => $id = $_POST['id_hapus']);
   hapus_data($data);
-  // var_dump(hapus_data($data));
-  // $stmthps = "DELETE FROM bc_pesan WHERE id = $id";
-  // // var_dump($stmthps);
-  // $xstmthps = mysqli_query($konek, $stmthps);
+
 
 }
 
@@ -100,91 +92,136 @@ if ( isset( $_POST['id_hapus'] ) )
 </div>
 <!-- akhir container -->
 
-<!-- container -->
-<div class="container-fluid">
-    <div class="card shadow">
-        <div class="card-body">
-          <!-- kontent utama -->
-          <div class="d-flex justify-content-end my-2">
-            <button class="btn btn-success btn-sm rounded rounded-pill m-1" onclick="tampilForm();">Bc Pesan Baru</button>
+<div class="container-xxl flex-grow-1 container-p-y">
+
+<!-- modal tambah data -->
+
+<div class="col-lg-4 col-md-6">
+  <!-- <small class="text-light fw-semibold">Default</small> -->
+  <div class="mt-3">
+    <!-- Modal Input-->
+    <div class="modal fade" id="tambahData" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Forms Input Group Telegram</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-          <div class="col-lg-12 d-flex align-items-stretch">
-            <div class="card w-100">
-              <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">
-                  Broadcast Pesan
-                </h5>
-                <div class="table-responsive">
-                  <table class="table text-nowrap mb-0 align-middle">
-                    <thead class="text-dark fs-4">
-                      <tr>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Id</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Judul Pesan</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Group</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Tanggal</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Waktu</h6>
-                        </th>
-                        <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Aksi</h6>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $dataBc = getAllDataBc();
-                    $n = 1;
-                    while ( $data_bc = mysqli_fetch_array($dataBc) )
-                    { 
-                    ?>
-                      <tr>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0"><?=$n; ?></h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-1"><?= $data_bc['id_pesan']; ?></h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="mb-0 fw-normal"><?= $data_bc['id_group']; ?></h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="mb-0 fw-normal"><?= $data_bc['tanggal']; ?></h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="mb-0 fw-normal"><?= $data_bc['waktu']; ?></h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <form action="" method="post">
-                            <input type="hidden" name="id_edit" value="<?= $data_bc['id']; ?>">
-                            <button type="submit"class="btn btn-sm btn-warning rounded rounded-pill mb-1">
-                              edit
-                            </button>
-                          </form>                          
-                          <form action="" method="post">
-                            <input type="hidden" name="id_hapus" value="<?= $data_bc['id']; ?>">
-                            <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-1" onclick="return confirm('kamu yakin ?');">
-                              hapus
-                            </button>
-                          </form>
-                        </td>
-                      </tr>
-                      <?php $n++; } ?>
-                    </tbody>
-                  </table>
-                </div>
+          <div class="modal-body">
+          <form action="" method="post">
+            <div class="row">
+              <div class="col mb-3">
+                <label for="nama_group" class="form-label">Nama Group</label>
+                <input type="text" id="nama_group" name="nama_group" class="form-control" placeholder="Masukan Nama Group" />
+              </div>
+            </div>
+            <div class="row g-2">
+              <div class="col mb-0">
+                <label for="id_group" class="form-label">ID Group</label>
+                <input type="number" id="id_group" name="id_group" class="form-control" placeholder="cth : -987654322" />
+              </div>
+              <div class="col mb-0">
+                <label for="username_group" class="form-label">Username Group</label>
+                <input type="text" id="username_group" name="username_group" class="form-control" placeholder="cth : t.me/@contoh" />
               </div>
             </div>
           </div>
-          <!-- akhir content utama -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary rounded rounded-pill" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" name="tambah" id="tombolTambahData" class="btn btn-primary rounded rounded-pill" value="1">Tambah Data</button>
+          </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-<!-- akhir container -->
+
+<!-- kontent utama -->
+  <div class="d-flex justify-content-end my-2">
+    <button class="btn btn-success rounded rounded-pill m-2"  data-bs-toggle="modal" data-bs-target="#tambahData">Bc Pesan Baru</button>
+  </div>
+  <div class="col-lg-12 d-flex align-items-stretch">
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <h5 class="card-title fw-semibold mb-4">
+          Broadcast Pesan
+        </h5>
+        <div class="table-responsive">
+          <table class="table text-nowrap mb-0 align-middle">
+            <thead class="text-dark fs-4">
+              <tr>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Id</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Judul Pesan</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Group</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Tanggal</h6>
+                </th>
+                        <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Waktu</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Aksi</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+            $dataBc = getAllDataBc();
+            $n = 1;
+            while ( $data_bc = mysqli_fetch_array($dataBc) )
+            { 
+            ?>
+              <tr>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0"><?=$n; ?></h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-semibold mb-1"><?= $data_bc['id_pesan']; ?></h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="mb-0 fw-normal"><?= $data_bc['id_group']; ?></h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="mb-0 fw-normal"><?= $data_bc['tanggal']; ?></h6>
+                </td>
+                        <td class="border-bottom-0">
+                  <h6 class="mb-0 fw-normal"><?= $data_bc['waktu']; ?></h6>
+                </td>
+                <td class="border-bottom-0">
+                  <form action="" method="post">
+                    <input type="hidden" name="id_edit" value="<?= $data_bc['id']; ?>">
+                            <button type="submit"class="btn btn-sm btn-warning rounded rounded-pill mb-1">
+                      edit
+                    </button>
+                  </form>                          
+                  <form action="" method="post">
+                    <input type="hidden" name="id_hapus" value="<?= $data_bc['id']; ?>">
+                    <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-1" onclick="return confirm('kamu yakin ?');">
+                      hapus
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <?php $n++; } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <!-- akhir content utama -->

@@ -12,21 +12,20 @@
   require_once __DIR__ . "/BusinessLogic/editData.php";  
   require_once __DIR__ . "/BusinessLogic/hapusData.php";
 ?>
-  <div class="body-wrapper">
+  <div class="layout-page">
     <?php
-      include "bagian/header.php";
+      require_once __DIR__ . "/bagian/header.php";
           // include "bagian/content.php";
     ?>
-    <div class="container-fluid">
+    <div class="content-wrapper">
         <?php
           $url= parseURL();
-          // var_dump($url);
+          //var_dump($url);
         if (isset($url) && $url != null){
-          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu"];
+          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data"];
           if( in_array($url, $menu) )
           {
-
-            include "content/".$url.".php";
+            require_once __DIR__ . "/content/".$url.".php";
           }
 
         }
