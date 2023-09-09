@@ -2,30 +2,17 @@
   // jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
-    //inisialisasi data 
-    $judul_pesan = $_POST['judul_pesan']; $isi_pesan = $_POST['isi_pesan']; $table = "template_pesan";
-    $data = array(
-      "judul_pesan" => "$judul_pesan",
-      "isi_pesan" => "$isi_pesan",
-      "table" => "$table",
-    );
-
-    insert($data);
+    $data = array("judul_pesan" => "$_POST[judul_pesan]", "isi_pesan" => "$_POST[isi_pesan]", "table" => "template_pesan");
+    tambahData($data);
   }
 
 
   // hapus template pesan
   if ( isset( $_POST['id_hapus'] ) )
   {
-    $id = $_POST['id_hapus'];
-    $stmthps = "DELETE FROM template_pesan WHERE id = $id";
-    // var_dump($stmthps);
-    $xstmthps = mysqli_query($konek, $stmthps);
+    $data = array("id" => "$_POST[id_hapus]", "table" => "template_pesan");
+    hapusData($data);
   }
-
-
-  $stmtshow = "SELECT * FROM template_pesan order by id DESC";
-  $exec = mysqli_query($konek, $stmtshow);
   
 ?>
 
@@ -62,13 +49,55 @@
 </div>
 <!-- akhir container -->
 
-<!-- container -->
-<div class="container-fluid">
-    <div class="card shadow">
-        <div class="card-body">
-          <!-- kontent utama -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+  <!-- modal-input -->
+  <div class="col-lg-4 col-md-6">
+    <!-- <small class="text-light fw-semibold">Default</small> -->
+    <div class="mt-3">
+      <!-- Modal Input-->
+      <div class="modal fade" id="tambahData" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Forms Input Template Pesan</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+            <form action="" method="post">
+              <div class="row">
+                <div class="col mb-3">
+                  <label for="judul_pesan" class="form-label">Judul Pesan</label>
+                  <input type="text" id="judul_pesan" name="judul_pesan" class="form-control" placeholder="Masukan Nama Judul Pesan" />
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col mb-0">
+                  <label for="isi_pesan" class="form-label">Isi Pesan</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="isi_pesan" rows="10"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary rounded rounded-pill" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" name="tambah" id="tombolTambahData" class="btn btn-primary rounded rounded-pill" value="1">Tambah Data</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- container -->
           <div class="d-flex justify-content-end my-2">
-            <button class="btn btn-success btn-sm rounded rounded-pill m-1" onclick="tampilForm();">Tambah Template Pesan</button>
+            <button class="btn btn-success rounded rounded-pill m-2"  data-bs-toggle="modal" data-bs-target="#tambahData">Tambah Template Pesan</button>
           </div>
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
@@ -80,16 +109,16 @@
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                       <tr>
-                        <th class="border-bottom-0">
+                        <th style="width:5%;" class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">#</h6>
                         </th>
-                        <th class="border-bottom-0">
+                        <th style="width: 25%;" class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Judul Pesan</h6>
                         </th>
-                        <th class="border-bottom-0">
+                        <th style="width: 60%;" class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Isi Pesan</h6>
                         </th>
-                        <th class="border-bottom-0">
+                        <th style="width: 10%;" class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Aksi</h6>
                         </th>
                       </tr>
@@ -97,7 +126,8 @@
                     <tbody>
                       <?php
                         $i = 1;
-                        while ( $data = mysqli_fetch_array($exec) ) {
+                        $pesan = getAllPesan();
+                        while ( $data = mysqli_fetch_array($pesan) ) {
                       ?>
                       <tr>
                         <td class="border-bottom-0">
@@ -107,20 +137,31 @@
                           <h6 class="fw-normal mb-1"><?= $data['judul_pesan']; ?></h6>
                         </td>
                         <td class="border-bottom-0">
-                          <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                              <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width: 30em;">
-                                  lihat detail
+                          <div class="accordion mt-3" id="accordionExample">
+                            <div class="card accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button
+                                  type="button"
+                                  class="accordion-button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#accordionOne"
+                                  aria-expanded="true"
+                                  aria-controls="accordionOne"
+                                >
+                                  Lihat Detail
                                 </button>
                               </h2>
-                              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body text-wrap" style="width: 30em;">
+
+                              <div
+                                id="accordionOne"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample"
+                              >
+                                <div class="accordion-body">
                                   <?= $data['isi_pesan']; ?>
                                 </div>
                               </div>
                             </div>
-                          </div>
                           <!-- <h6 class="mb-0 fw-normal"><?= $data['isi_pesan']; ?></h6> -->
                         </td>
                         <td class="border-bottom-0">
@@ -141,7 +182,5 @@
             </div>
           </div>
           <!-- akhir content utama -->
-        </div>
-    </div>
-</div>
+      </div>
 <!-- akhir container -->

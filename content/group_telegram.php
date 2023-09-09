@@ -3,7 +3,6 @@
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
     $data = array( "nama_group" => "$_POST[nama_group]", "id_group" => "$_POST[id_group]", "username_group" => "$_POST[username_group]", "table" => "group_tele");
-
     $insert = tambahData($data);
   }
 
@@ -127,13 +126,13 @@
 
                     <form action="" method="post">
                       <input type="hidden" name="id_edit" value="<?= $data['id']; ?>">
-                      <button type="submit"class="btn btn-sm btn-warning rounded rounded-pill mb-1" data-bs-toggle="modal" data-bs-target="#editData" >
+                      <button type="submit"class="btn btn-sm btn-warning rounded rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#editData" >
                         edit
                       </button>
                     </form>
                     <form action="" method="post">
                       <input type="hidden" name="id_hapus" value="<?= $data['id']; ?>">
-                      <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-1" onclick="return confirm('kamu yakin ?');">
+                      <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-2" onclick="return confirm('kamu yakin ?');">
                         hapus
                       </button>
                     </form>

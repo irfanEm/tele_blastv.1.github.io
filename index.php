@@ -20,12 +20,17 @@
     <div class="content-wrapper">
         <?php
           $url= parseURL();
-          //var_dump($url);
-        if (isset($url) && $url != null){
-          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data"];
-          if( in_array($url, $menu) )
+          if ( sizeof( $url ) > 3 )
           {
-            require_once __DIR__ . "/content/".$url.".php";
+            header("Location:http://localhost/tele_blastv.1.github.io/404");
+            $url[0] = "404";
+          }
+          // var_dump($url[0]);
+        if (isset($url) && $url != null){
+          $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data", "404"];
+          if( in_array($url[0], $menu) )
+          {
+            require_once __DIR__ . "/content/".$url[0].".php";
           }
 
         }
