@@ -2,7 +2,7 @@
 function getAllPesan ()
 {
     global $konek;
-    $stmt = "SELECT * FROM template_pesan";
+    $stmt = "SELECT * FROM template_pesan order by id desc";
     $exec = mysqli_query($konek, $stmt);
     // $result = mysqli_fetch_array($exec);
     return $exec;

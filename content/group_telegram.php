@@ -81,8 +81,8 @@
           Group Telegram
           <?php //var_dump($_GET['id']); ?>
         </h5>
-        <div class="table-responsive">
-          <table class="table text-nowrap mb-0 align-middle">
+        <div class="table-responsive" class="display">
+          <table class="table text-nowrap mb-0 align-middle" id="group_telegram">
             <thead class="text-dark fs-4">
               <tr>
                 <th class="border-bottom-0">
@@ -122,7 +122,7 @@
                   <h6 class="mb-0 fw-normal"><?= $data['username_group']; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                    <a class="btn btn-sm btn-warning rounded rounded-pill mb-2"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data['id'];?>">
+                    <a class="btn btn-sm btn-warning rounded rounded-pill mb-2 text-white"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data['id'];?>">
                       edit
                     </a>
                     <form action="" method="post">

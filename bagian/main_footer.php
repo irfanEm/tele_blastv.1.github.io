@@ -52,5 +52,13 @@
         } );
 </script>
 
+<!-- DataTables -->
+<script>
+    new DataTable('#bc_pesan');
+    new DataTable('#group_telegram');
+    new DataTable('#template_pesan');
+</script>
+
+
 </body>
 </html>

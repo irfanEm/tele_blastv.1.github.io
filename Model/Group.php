@@ -3,7 +3,7 @@
 function getAllGroup()
 {
     global $konek;
-    $stmt = "SELECT * FROM group_tele";
+    $stmt = "SELECT * FROM group_tele order by id desc";
     $exec = mysqli_query($konek, $stmt);
     // $result = mysqli_fetch_array($exec);
     return $exec;

@@ -22,39 +22,7 @@
   }
 ?>
 
-<!-- awal container -->
-<div class="container-fluid" id="container_form" style="display: none;">
-    <div class="card shadow">
-        <div class="card-body">
-
-          <!-- form input -->
-          <div class="d-flex justify-content-between">
-            <h5 class="card-title fw-semibold mb-4">Forms Input Template Pesan</h5>
-            <button type="button" class="btn-close" aria-label="Close" onclick="sembunyikanForm();"></button>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <form action="" method="post">
-                <div class="mb-3">
-                  <label for="judul_pesan" class="form-label">Judul Pesan</label>
-                  <input type="text" name="judul_pesan" class="form-control" id="judul_pesan" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                  <label for="isi_pesan" class="form-label">Isi Pesan</label>
-                  <textarea name="isi_pesan" id="isi_pesan" cols="30" rows="10" class="form-control">
-
-                  </textarea>
-                </div>
-                <button type="submit" class="btn btn-success" name="tambah" value="1">Tambah</button>
-              </form>
-            </div>
-          </div>
-          <!-- akhir input form -->
-          </div>
-    </div>
-</div>
-<!-- akhir container -->
-
+<!-- container pembungkus utama -->
 <div class="container-xxl flex-grow-1 container-p-y">
 
   <!-- modal-input -->
@@ -112,7 +80,7 @@
                   Template Pesan
                 </h5>
                 <div class="table-responsive">
-                  <table class="table text-nowrap mb-0 align-middle">
+                  <table class="table text-nowrap mb-0 align-middle" id="template_pesan" class="display">
                     <thead class="text-dark fs-4">
                       <tr>
                         <th style="width:5%;" class="border-bottom-0">

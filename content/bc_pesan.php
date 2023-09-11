@@ -25,6 +25,20 @@ if ( isset( $_POST['id_hapus'] ) )
   hapus_data($data);
 }
 
+// edit data bc pesan
+if( isset ( $_POST['editBc_pesan'] ) )
+{
+  $group = [];
+  foreach ($_POST['group_tele'] as $value)
+  {
+    array_push($group, $value);
+  }
+
+  $group = implode(', ', $group);  
+  $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "tanggal" => "$_POST[tanggal]", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
+  $edit = editData($data); // var_dump($edit);
+}
+
 
 
 ?>
@@ -116,7 +130,7 @@ if ( isset( $_POST['id_hapus'] ) )
           Broadcast Pesan
         </h5>
         <div class="table-responsive">
-          <table class="table text-nowrap mb-0 align-middle">
+          <table class="table text-nowrap mb-0 align-middle" id="bc_pesan" class="display">
             <thead class="text-dark fs-4">
               <tr>
                 <th class="border-bottom-0">
@@ -163,7 +177,7 @@ if ( isset( $_POST['id_hapus'] ) )
                   <h6 class="mb-0 fw-normal"><?= $data_bc['waktu']; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                    <a class="btn btn-sm btn-warning rounded rounded-pill mb-2"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data_bc['id'];?>">
+                    <a class="btn btn-sm btn-warning rounded rounded-pill mb-2 text-white"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data_bc['id'];?>">
                       edit
                     </a>
                   <form action="" method="post">
@@ -195,6 +209,7 @@ if ( isset( $_POST['id_hapus'] ) )
                         <div class="modal-body">
                         <form action="" method="post">
                           
+                          <input type="hidden" name="id" value="<?= $data_bc['id'];?>">
                           <div class="mb-3">
                             <label for="pesan" class="form-label">Pilih Pesan</label>
                             <select id="pesan" name="pesan" class="form-select">
@@ -243,7 +258,7 @@ if ( isset( $_POST['id_hapus'] ) )
                           <button type="button" class="btn btn-outline-secondary rounded rounded-pill" data-bs-dismiss="modal">
                             Tutup
                           </button>
-                          <button type="submit" name="bc_pesan" id="tombolTambahData" class="btn btn-primary rounded rounded-pill" value="1">Ubah Data</button>
+                          <button type="submit" name="editBc_pesan" id="tombolTambahData" class="btn btn-primary rounded rounded-pill" value="1">Ubah Data</button>
                         </div>
                         </form>
                       </div>
