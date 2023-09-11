@@ -211,27 +211,29 @@ if ( isset( $_POST['id_hapus'] ) )
                           </div>
                           <div class="mb-3">
                               <label for="tanggal" class="form-label">Tanggal</label>
-                              <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $pesanId['tanggal']; ?>"> 
+                              <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= $pesanId['tanggal']; ?>"> 
                           </div>
                           <div class="mb-3">
                               <label for="waktu" class="form-label">Waktu</label>
                               <input type="time" class="form-control" id="waktu" name="waktu" value="<?= $pesanId['waktu']; ?>"> 
                           </div>
-                          
+
                           <div class="row gy-3">
                               <div class="col-md">
                                 <label for="pesan" class="form-label">Pilih Group Telegram</label>
                                   <?php 
+                                    $groups = explode(',', $pesanId['id_group']); //var_dump($groups);
                                     $group = getAllGroup();
                                     $l = 1;
                                     while ( $data_group = mysqli_fetch_array($group) )
                                     {
                                     ?>
+                                    
                                   <div class="form-check mt-1">
-                                      <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['nama']; ?>"  <?php if($data_group['nama'] = $pesanId['id_group']) {echo 'checked';} ?>>
-                                      <label class="form-check-label" for="group_tele">
+                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['nama']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
+                                    <label class="form-check-label" for="group_tele">
                                       <?= $data_group['nama']; ?>
-                                      </label>
+                                    </label>
                                   </div>
                                   <?php $l++; } ?>
                               </div>

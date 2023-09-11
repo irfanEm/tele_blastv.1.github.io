@@ -10,14 +10,13 @@
   if ( isset( $_POST['id_hapus'] ) )
   {
     $data = array("id" => $_POST['id_hapus'], "table" => "group_tele");
-    hapusData($data);
+    $hapus = hapusData($data);
   }
     
-  if( isset($_POST['id_edit']))
+  if( isset($_POST['editData']))
   {
-    $id = $_POST['id_edit'];
-    $data = getAllGroupId($id);
-    // print_r($data);
+    $data = array("id" => "$_POST[id]",  "nama_group" => "$_POST[nama_group]", "id_group" => "$_POST[id_group]", "username_group" => "$_POST[username_group]", "table" => "group_tele");
+    $edit = editData($data);
   }
 ?>
 
@@ -123,13 +122,9 @@
                   <h6 class="mb-0 fw-normal"><?= $data['username_group']; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-
-                    <form action="" method="post">
-                      <input type="hidden" name="id_edit" value="<?= $data['id']; ?>">
-                      <button type="submit"class="btn btn-sm btn-warning rounded rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#editData" >
-                        edit
-                      </button>
-                    </form>
+                    <a class="btn btn-sm btn-warning rounded rounded-pill mb-2"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data['id'];?>">
+                      edit
+                    </a>
                     <form action="" method="post">
                       <input type="hidden" name="id_hapus" value="<?= $data['id']; ?>">
                       <button type="submit"class="btn btn-sm btn-danger rounded rounded-pill mb-2" onclick="return confirm('kamu yakin ?');">
@@ -139,6 +134,52 @@
                 </td>
                 </td>
               </tr>
+              <!-- modal update data -->
+              <div class="modal fade" id="updateData<?= $data['id'];?>" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel1">Forms Edit Group Telegram</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                    <form action="" method="post">
+                      <?php
+                        $groupedit = getAllGroupId($data['id']);
+                      ?>
+                      <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="nama_group" class="form-label">Nama Group</label>
+                          <input type="text" id="nama_group" name="nama_group" class="form-control" value="<?= $groupedit->nama; ?>"/>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-0">
+                          <label for="id_group" class="form-label">ID Group</label>
+                          <input type="number" id="id_group" name="id_group" class="form-control" value="<?= $groupedit->id_group; ?>"/>
+                        </div>
+                        <div class="col mb-0">
+                          <label for="username_group" class="form-label">Username Group</label>
+                          <input type="text" id="username_group" name="username_group" class="form-control" value="<?= $groupedit->username_group; ?>"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary rounded rounded-pill" data-bs-dismiss="modal">
+                        Close
+                      </button>
+                      <button type="submit" name="editData" id="tombolTambahData" class="btn btn-primary rounded rounded-pill" value="1">Edit Data</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
               <?php  $i++; }  ?>
             </tbody>
           </table>
