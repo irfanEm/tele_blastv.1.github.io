@@ -37,6 +37,7 @@ if (isset($_SESSION["error"])){
     <title>Tele_blasT XML.v.1</title>
 
     <meta name="description" content="" />
+    <meta http-equiv="refresh" content="60">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />

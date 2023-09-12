@@ -74,7 +74,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                   while ( $hasil = mysqli_fetch_array( $pesan ) )
                   {
                   ?>
-                    <option value="<?= $hasil['judul_pesan']; ?>"><?= $hasil['judul_pesan']; ?></option>
+                    <option value="<?= $hasil['id']; ?>"><?= $hasil['judul_pesan']; ?></option>
                   <?php $h++; } ?>
                 </select>
               </div>
@@ -97,7 +97,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                         {
                         ?>
                       <div class="form-check mt-1">
-                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['nama']; ?>">
+                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>">
                           <label class="form-check-label" for="group_tele">
                           <?= $data_group['nama']; ?>
                           </label>
@@ -159,16 +159,23 @@ if( isset ( $_POST['editBc_pesan'] ) )
             $n = 1;
             while ( $data_bc = mysqli_fetch_array($dataBc) )
             { 
+              $pesan = getAllPesanId($data_bc['id_pesan']);
+              $groups = [];
+              $id_groups = explode(", ",$data_bc['id_group']);
+              foreach ( $id_groups as $idPesan ) {
+                $group = getAllGroupId($idPesan);
+                array_push($groups, $group->nama);
+              }
             ?>
               <tr>
                 <td class="border-bottom-0">
                   <h6 class="fw-semibold mb-0"><?=$n; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-1"><?= $data_bc['id_pesan']; ?></h6>
+                  <h6 class="fw-normal mb-1"><?= $pesan->judul_pesan; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="mb-0 fw-normal"><?= $data_bc['id_group']; ?></h6>
+                  <h6 class="mb-0 fw-normal"><?= implode(", ",$groups); ?></h6>
                 </td>
                 <td class="border-bottom-0">
                   <h6 class="mb-0 fw-normal"><?= $data_bc['tanggal']; ?></h6>
@@ -220,7 +227,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                               while ( $hasil = mysqli_fetch_array( $pesan ) )
                               {
                               ?>
-                                <option value="<?= $hasil['judul_pesan']; ?>" <?php if ($hasil['judul_pesan'] == $pesanId['id_pesan'] ) { echo 'selected'; } ?>><?= $hasil['judul_pesan']; ?></option>
+                                <option value="<?= $hasil['id']; ?>" <?php if ($hasil['judul_pesan'] == $pesanId['id_pesan'] ) { echo 'selected'; } ?>><?= $hasil['judul_pesan']; ?></option>
                               <?php $h++; } ?>
                             </select>
                           </div>
@@ -245,7 +252,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                                     ?>
                                     
                                   <div class="form-check mt-1">
-                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['nama']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
+                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
                                     <label class="form-check-label" for="group_tele">
                                       <?= $data_group['nama']; ?>
                                     </label>
