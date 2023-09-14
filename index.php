@@ -25,7 +25,7 @@
         */
           var_dump(date("d-m-Y H:i:s"));
           // var_dump($data_group, $data_pesan);
-          var_dump($dataGroup, $idgroup);
+          // var_dump();
         /**
          * tempat debugging
         */

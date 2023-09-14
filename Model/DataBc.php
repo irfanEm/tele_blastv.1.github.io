@@ -23,6 +23,6 @@ function getDataBcbyDate($tanggal)
     global $konek;
     $stmt = "SELECT * FROM bc_pesan WHERE tanggal = '$tanggal'";
     $exec = mysqli_query($konek, $stmt);
-    $hasil = mysqli_fetch_object($exec);
+    // $hasil = mysqli_fetch_object($exec);
     return $exec;
 }
