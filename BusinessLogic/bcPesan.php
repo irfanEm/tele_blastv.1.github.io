@@ -24,7 +24,8 @@ while ( $hasil = mysqli_fetch_object($dataBc) ) {           // lakukan pengulang
     
             $idgroup = getAllGroupId($group);                       // tampung data group berdasarkan id_group dalam variabel $idgroup
             
-            bcPesan($dataPesan->isi_pesan, $idgroup->id_group);     // lakukan bc pesan ke group telegram menggunakan function bcPesan
+            $result = bcPesan($dataPesan->isi_pesan, $idgroup->id_group); 
+            var_dump($result);   // lakukan bc pesan ke group telegram menggunakan function bcPesan
     
         }
     }
@@ -40,6 +41,6 @@ function bcPesan($pesan, $group)
         "chat_id" => "$group"  
     ];
 
-    file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );
-    $token = null;
+    $exec = file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );
+    return $exec;
 }
