@@ -164,6 +164,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
               $id_groups = explode(", ",$data_bc['id_group']);
               foreach ( $id_groups as $idPesan ) {
                 $group = getAllGroupId($idPesan);
+                // var_dump($group);
                 array_push($groups, $group->nama);
               }
             ?>

@@ -12,6 +12,7 @@
   require_once __DIR__ . "/BusinessLogic/editData.php";  
   require_once __DIR__ . "/BusinessLogic/hapusData.php";
   require_once __DIR__ . "/BusinessLogic/bcPesan.php";
+  require_once __DIR__ . "/BusinessLogic/getIdGroup.php";
 ?>
   <div class="layout-page">
     <?php
@@ -26,6 +27,8 @@
           var_dump(date("d-m-Y H:i:s"));
           // var_dump($data_group, $data_pesan);
           // var_dump();
+          // $hasil = getIdGroup();
+          // var_dump($hasil);
         /**
          * tempat debugging
         */

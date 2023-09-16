@@ -53,7 +53,7 @@
               <div class="row g-2">
                 <div class="col mb-0">
                   <label for="isi_pesan" class="form-label">Isi Pesan</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" name="isi_pesan" rows="10"></textarea>
+                  <textarea class="form-control" id="" name="isi_pesan" rows="10"></textarea>
                 </div>
               </div>
             </div>
@@ -181,7 +181,7 @@
                                   <div class="row g-2">
                                     <div class="col mb-0">
                                       <label for="isi_pesan" class="form-label">Isi Pesan</label>
-                                      <textarea class="form-control" id="ubahPesan" name="isi_pesan" rows="10"> <?= $pesanId -> isi_pesan; ?></textarea>
+                                      <textarea class="form-control" id="" name="isi_pesan" rows="10"> <?= $pesanId -> isi_pesan; ?></textarea>
                                     </div>
                                   </div>
                                 </div>
