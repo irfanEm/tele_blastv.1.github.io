@@ -89,7 +89,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
               
               <div class="row gy-3">
                   <div class="col-md">
-                    <label for="pesan" class="form-label">Pilih Group Telegram</label>
+                    <label for="pesan" class="form-label" require>Pilih Group Telegram</label>
                       <?php 
                         $group = getAllGroup();
                         $l = 1;
@@ -97,7 +97,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                         {
                         ?>
                       <div class="form-check mt-1">
-                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" required>
+                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>">
                           <label class="form-check-label" for="group_tele">
                           <?= $data_group['nama']; ?>
                           </label>
@@ -253,7 +253,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                                     ?>
                                     
                                   <div class="form-check mt-1">
-                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?> required>
+                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
                                     <label class="form-check-label" for="group_tele">
                                       <?= $data_group['nama']; ?>
                                     </label>
