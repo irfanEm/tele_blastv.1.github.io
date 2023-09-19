@@ -67,7 +67,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
               
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pilih Pesan</label>
-                <select id="pesan" name="pesan" class="form-select">
+                <select id="pesan" name="pesan" class="form-select" required>
                   <?php
                   $pesan = getAllPesan();
                   $h = 1;
@@ -80,11 +80,11 @@ if( isset ( $_POST['editBc_pesan'] ) )
               </div>
               <div class="mb-3">
                   <label for="tanggal" class="form-label">Tanggal</label>
-                  <input type="date" class="form-control" id="tanggal" name="tanggal"> 
+                  <input type="date" class="form-control" id="tanggal" name="tanggal" required> 
               </div>
               <div class="mb-3">
                   <label for="waktu" class="form-label">Waktu</label>
-                  <input type="time" class="form-control" id="waktu" name="waktu"> 
+                  <input type="time" class="form-control" id="waktu" name="waktu" required> 
               </div>
               
               <div class="row gy-3">
@@ -97,7 +97,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                         {
                         ?>
                       <div class="form-check mt-1">
-                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>">
+                          <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" required>
                           <label class="form-check-label" for="group_tele">
                           <?= $data_group['nama']; ?>
                           </label>
@@ -220,7 +220,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                           <input type="hidden" name="id" value="<?= $data_bc['id'];?>">
                           <div class="mb-3">
                             <label for="pesan" class="form-label">Pilih Pesan</label>
-                            <select id="pesan" name="pesan" class="form-select">
+                            <select id="pesan" name="pesan" class="form-select" required>
                               <?php
                               $pesanId = mysqli_fetch_array(getPesanById($data_bc['id']));
                               $pesan = getAllPesan();
@@ -234,11 +234,11 @@ if( isset ( $_POST['editBc_pesan'] ) )
                           </div>
                           <div class="mb-3">
                               <label for="tanggal" class="form-label">Tanggal</label>
-                              <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= $pesanId['tanggal']; ?>"> 
+                              <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= $pesanId['tanggal']; ?>" required> 
                           </div>
                           <div class="mb-3">
                               <label for="waktu" class="form-label">Waktu</label>
-                              <input type="time" class="form-control" id="waktu" name="waktu" value="<?= $pesanId['waktu']; ?>"> 
+                              <input type="time" class="form-control" id="waktu" name="waktu" value="<?= $pesanId['waktu']; ?>" required> 
                           </div>
 
                           <div class="row gy-3">
@@ -253,7 +253,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                                     ?>
                                     
                                   <div class="form-check mt-1">
-                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
+                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?> required>
                                     <label class="form-check-label" for="group_tele">
                                       <?= $data_group['nama']; ?>
                                     </label>

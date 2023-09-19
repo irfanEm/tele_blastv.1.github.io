@@ -43,17 +43,17 @@
             <div class="row">
               <div class="col mb-3">
                 <label for="nama_group" class="form-label">Nama Group</label>
-                <input type="text" id="nama_group" name="nama_group" class="form-control" placeholder="Masukan Nama Group" />
+                <input type="text" id="nama_group" name="nama_group" class="form-control" placeholder="Masukan Nama Group" required/>
               </div>
             </div>
             <div class="row g-2">
               <div class="col mb-0">
                 <label for="id_group" class="form-label">ID Group</label>
-                <input type="number" id="id_group" name="id_group" class="form-control" placeholder="cth : -987654322" />
+                <input type="number" id="id_group" name="id_group" class="form-control" placeholder="cth : -987654322" required/>
               </div>
               <div class="col mb-0">
                 <label for="username_group" class="form-label">Username Group</label>
-                <input type="text" id="username_group" name="username_group" class="form-control" placeholder="cth : t.me/@contoh" />
+                <input type="text" id="username_group" name="username_group" class="form-control" placeholder="cth : t.me/@contoh" required />
               </div>
             </div>
           </div>
@@ -156,17 +156,17 @@
                       <div class="row">
                         <div class="col mb-3">
                           <label for="nama_group" class="form-label">Nama Group</label>
-                          <input type="text" id="nama_group" name="nama_group" class="form-control" value="<?= $groupedit->nama; ?>"/>
+                          <input type="text" id="nama_group" name="nama_group" class="form-control" value="<?= $groupedit->nama; ?>" required/>
                         </div>
                       </div>
                       <div class="row g-2">
                         <div class="col mb-0">
                           <label for="id_group" class="form-label">ID Group</label>
-                          <input type="number" id="id_group" name="id_group" class="form-control" value="<?= $groupedit->id_group; ?>"/>
+                          <input type="number" id="id_group" name="id_group" class="form-control" value="<?= $groupedit->id_group; ?>" required />
                         </div>
                         <div class="col mb-0">
                           <label for="username_group" class="form-label">Username Group</label>
-                          <input type="text" id="username_group" name="username_group" class="form-control" value="<?= $groupedit->username_group; ?>"/>
+                          <input type="text" id="username_group" name="username_group" class="form-control" value="<?= $groupedit->username_group; ?>" required/>
                         </div>
                       </div>
                     </div>

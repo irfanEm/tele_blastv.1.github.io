@@ -25,7 +25,7 @@ while ( $hasil = mysqli_fetch_object($dataBc) ) {           // lakukan pengulang
             $idgroup = getAllGroupId($group);                       // tampung data group berdasarkan id_group dalam variabel $idgroup
             
             $result = bcPesan($dataPesan->isi_pesan, $idgroup->id_group); 
-            var_dump($result);   // lakukan bc pesan ke group telegram menggunakan function bcPesan
+            //var_dump($result);   // lakukan bc pesan ke group telegram menggunakan function bcPesan
     
         }
     }
