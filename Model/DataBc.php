@@ -18,11 +18,11 @@ function getPesanById($id)
     return $exec;
 }
 
-function getDataBcbyDate($tanggal)
+function getDataBcbyDate($waktu)
 {
     global $konek;
-    $stmt = "SELECT * FROM bc_pesan WHERE tanggal = '$tanggal'";
+    $stmt = "SELECT * FROM bc_pesan WHERE waktu = '$waktu'";
     $exec = mysqli_query($konek, $stmt);
-    // $hasil = mysqli_fetch_object($exec);
-    return $exec;
+    $hasil = mysqli_fetch_object($exec);
+    return $hasil;
 }
