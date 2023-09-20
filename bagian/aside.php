@@ -56,7 +56,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2 text-capitalize">Tele_blasT.v.1</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -68,11 +68,15 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
-              <a href="<?= $base_url; ?>group_telegram" class="menu-link">
+            <!-- <li class="menu-item">
+              <a href="<?//= $base_url; ?>group_telegram" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
+            </li> -->
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text"><?= date("d-m-Y H:i:s") ?></span>
             </li>
 
             <li class="menu-header small text-uppercase">
@@ -80,7 +84,7 @@
             </li>
 
             <!-- Group Telegram -->
-            <li class="menu-item">
+            <li class="menu-item <?php echo $active = ($url[0]=='group_telegram') ? 'active' : ''; ?>">
               <a href="<?= $base_url; ?>group_telegram" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Group Telegram</div>
@@ -88,7 +92,7 @@
             </li>
 
             <!-- Template Pesan -->
-            <li class="menu-item">
+            <li class="menu-item <?php echo $active = ($url[0]=='template_pesan') ? 'active' : ''; ?>">
               <a href="<?= $base_url; ?>template_pesan" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Template Pesan</div>
@@ -96,7 +100,7 @@
             </li>
 
             <!-- BC Pesan -->
-            <li class="menu-item">
+            <li class="menu-item <?php echo $active = ($url[0]=='bc_pesan') ? 'active' : ''; ?>">
               <a href="<?= $base_url; ?>bc_pesan" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Broadcast Pesan</div>

@@ -7,3 +7,5 @@
       return $url;
     }
   }
+
+  $url= parseURL();

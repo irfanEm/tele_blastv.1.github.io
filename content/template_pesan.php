@@ -131,7 +131,7 @@
                                 class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample<?= $i; ?>"
                               >
-                                <div class="accordion-body">
+                                <div class="accordion-body text-wrap">
                                   <?= $data['isi_pesan']; ?>
                                 </div>
                               </div>

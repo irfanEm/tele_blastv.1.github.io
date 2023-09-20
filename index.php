@@ -1,4 +1,5 @@
 <?php
+  
   require_once __DIR__ . "/config/koneksi.php";
   require_once __DIR__ . "/function/function.php";
   require_once __DIR__ . "/function/insert_data.php";
@@ -24,7 +25,6 @@
         /**
          * tempat debugging
         */
-          echo date("d-m-Y H:i:s");
           // var_dump($data_group, $data_pesan);
           // var_dump();
           // $hasil = getIdGroup();
