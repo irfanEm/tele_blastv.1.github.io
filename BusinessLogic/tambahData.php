@@ -10,7 +10,7 @@ function tambahData($data)
             break;
 
         case("bc_pesan"):
-            $stmt = "INSERT INTO $data[table] VALUES (null, '$data[id_pesan]', '$data[id_group]', '$data[tanggal]', '$data[waktu]')";
+            $stmt = "INSERT INTO $data[table] VALUES (null, '$data[id_pesan]', '$data[id_group]', '$data[waktu]')";
             break;
 
         case("template_pesan"):

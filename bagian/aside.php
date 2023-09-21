@@ -1,3 +1,4 @@
+    <?php require_once __DIR__ . "/../config/config.php"; ?>
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
@@ -77,6 +78,7 @@
 
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text"><?= date("d-m-Y H:i:s") ?></span>
+
             </li>
 
             <li class="menu-header small text-uppercase">

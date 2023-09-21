@@ -9,7 +9,7 @@ function editData($data)
             break;
 
         case("bc_pesan"):
-            $stmt = "UPDATE bc_pesan set id_pesan = '$data[id_pesan]', id_group = '$data[id_group]', tanggal = '$data[tanggal]', waktu = '$data[waktu]' WHERE id = $data[id]";
+            $stmt = "UPDATE bc_pesan set id_pesan = '$data[id_pesan]', id_group = '$data[id_group]', waktu = '$data[waktu]' WHERE id = $data[id]";
             break;
 
         case("template_pesan"):

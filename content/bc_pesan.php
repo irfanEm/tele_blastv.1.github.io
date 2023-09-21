@@ -4,16 +4,13 @@
 if ( isset( $_POST['bc_pesan'] ) )
 {
   // tangkap data dari post user
-  $pesan = $_POST['pesan']; 
-  $tanggal = date_format(date_create($_POST['tanggal']), "d-m-Y"); 
-  $waktu = date_format(date_create($tanggal.$_POST['waktu']), "H:i:s");
   $group = [];
   foreach ($_POST['group_tele'] as $value)
   {
     array_push($group, $value);
   }
 
-  $group = implode(', ', $group);  $data = array ( "id_pesan" => "$pesan", "id_group" => "$group", "tanggal" => "$tanggal", "waktu" => "$waktu", "table" => "bc_pesan");
+  $group = implode(', ', $group);  $data = array ( "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
 
   $result = tambahData($data);
 }
@@ -35,7 +32,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
   }
 
   $group = implode(', ', $group);  
-  $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "tanggal" => "$_POST[tanggal]", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
+  $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
   $edit = editData($data); // var_dump($edit);
 }
 
@@ -79,14 +76,9 @@ if( isset ( $_POST['editBc_pesan'] ) )
                 </select>
               </div>
               <div class="mb-3">
-                  <label for="tanggal" class="form-label">Tanggal</label>
-                  <input type="date" class="form-control" id="tanggal" name="tanggal" required> 
-              </div>
-              <div class="mb-3">
                   <label for="waktu" class="form-label">Waktu</label>
                   <input type="time" class="form-control" id="waktu" name="waktu" required> 
               </div>
-              
               <div class="row gy-3">
                   <div class="col-md">
                     <label for="pesan" class="form-label" require>Pilih Group Telegram</label>
@@ -143,9 +135,6 @@ if( isset ( $_POST['editBc_pesan'] ) )
                   <h6 class="fw-semibold mb-0">Group</h6>
                 </th>
                 <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Tanggal</h6>
-                </th>
-                        <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Waktu</h6>
                 </th>
                 <th class="border-bottom-0">
@@ -176,12 +165,9 @@ if( isset ( $_POST['editBc_pesan'] ) )
                   <h6 class="fw-normal mb-1"><?= $pesan->judul_pesan; ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="mb-0 fw-normal"><?= implode(", ",$groups); ?></h6>
+                  <h6 class="mb-0 fw-normal text-wrap"><?= implode(", ",$groups); ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="mb-0 fw-normal"><?= $data_bc['tanggal']; ?></h6>
-                </td>
-                        <td class="border-bottom-0">
                   <h6 class="mb-0 fw-normal"><?= $data_bc['waktu']; ?></h6>
                 </td>
                 <td class="border-bottom-0">
@@ -231,10 +217,6 @@ if( isset ( $_POST['editBc_pesan'] ) )
                                 <option value="<?= $hasil['id']; ?>" <?php if ($hasil['judul_pesan'] == $pesanId['id_pesan'] ) { echo 'selected'; } ?>><?= $hasil['judul_pesan']; ?></option>
                               <?php $h++; } ?>
                             </select>
-                          </div>
-                          <div class="mb-3">
-                              <label for="tanggal" class="form-label">Tanggal</label>
-                              <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= $pesanId['tanggal']; ?>" required> 
                           </div>
                           <div class="mb-3">
                               <label for="waktu" class="form-label">Waktu</label>
