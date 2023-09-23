@@ -18,9 +18,10 @@
   <div class="layout-page">
     <?php
       // require_once __DIR__ . "/bagian/header.php";
-          // include "bagian/content.php";
-    ?>
+      // include "bagian/content.php";
+      ?>
     <div class="content-wrapper">
+      <!-- <h2>hello world</h2> -->
         <?php
         /**
          * tempat debugging

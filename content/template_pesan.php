@@ -3,7 +3,20 @@
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
     $data = array("judul_pesan" => "$_POST[judul_pesan]", "isi_pesan" => "$_POST[isi_pesan]", "table" => "template_pesan");
-    tambahData($data);
+    if(tambahData($data)){
+      echo "gagal";
+      // $error = array(
+      //   "pesan" => "Gagal menambah template pesan",
+      //   "class" => "danger"
+      // );
+    }else{
+      echo "berhasil";
+      // $error = array(
+      //   "pesan" => "Berhasil menambah template pesan",
+      //   "class" => "success"
+      // );
+    }
+    
   }
 
 
@@ -11,19 +24,45 @@
   if ( isset( $_POST['id_hapus'] ) )
   {
     $data = array("id" => "$_POST[id_hapus]", "table" => "template_pesan");
-    hapusData($data);
+    if(hapusData($data)){
+      $error = array(
+        "pesan" => "Gagal menghapus template pesan",
+        "class" => "danger"
+      );
+    }else{
+      $error = array(
+        "pesan" => "Berhasil menghapus template pesan",
+        "class" => "success"
+      );
+    }
   }
 
   // update data
   if ( isset( $_POST['editData'] ) )
   {
     $data = array("id" => "$_POST[id]", "judul_pesan" => "$_POST[judul_pesan]", "isi_pesan" => "$_POST[isi_pesan]", "table" => "template_pesan");
-    $edit = editData($data);
+    if(editData($data)){
+      $error = array(
+        "pesan" => "Gagal mengedit template pesan",
+        "class" => "danger"
+      );
+    }else{
+      $error = array(
+        "pesan" => "Berhasil mengedit template pesan",
+        "class" => "success"
+      );
+    }
   }
 ?>
 
 <!-- container pembungkus utama -->
 <div class="container-xxl flex-grow-1 container-p-y">
+<?php if(isset($error)) { ?>
+  <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light" role="alert">
+    <strong><?= $error['pesan']; ?></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
 
   <!-- modal-input -->
   <div class="col-lg-4 col-md-6">
