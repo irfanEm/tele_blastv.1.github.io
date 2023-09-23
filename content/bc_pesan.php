@@ -25,15 +25,21 @@ if ( isset( $_POST['id_hapus'] ) )
 // edit data bc pesan
 if( isset ( $_POST['editBc_pesan'] ) )
 {
+  $group_tele = "group_tele" . $_POST['id'] ;
+  var_dump($_POST['id']);
+  var_dump($_POST['pesan']);
+  var_dump($_POST[$group_tele]);
+  var_dump($_POST['waktu']);
+  // if($_POST['id'] )
   $group = [];
-  foreach ($_POST['group_tele'] as $value)
-  {
-    array_push($group, $value);
-  }
+  // foreach ($_POST['group_tele'] as $value)
+  // {
+  //   array_push($group, $value);
+  // }
 
-  $group = implode(', ', $group);  
-  $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
-  $edit = editData($data); // var_dump($edit);
+  // $group = implode(', ', $group);  
+  // $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
+  // $edit = editData($data); // var_dump($edit);
 }
 
 ?>
@@ -233,7 +239,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                                     ?>
                                     
                                   <div class="form-check mt-1">
-                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $l; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['nama'], $groups) ) { echo "checked"; } ?>>
+                                    <input class="form-check-input" type="checkbox" id="group_tele" name="group_tele[<?= $data_bc['id']; ?>]" value="<?= $data_group['id']; ?>" <?php if ( in_array($data_group['id'], $groups) ) { echo "checked"; } ?>>
                                     <label class="form-check-label" for="group_tele">
                                       <?= $data_group['nama']; ?>
                                     </label>
