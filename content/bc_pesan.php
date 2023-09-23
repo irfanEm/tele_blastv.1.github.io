@@ -36,8 +36,6 @@ if( isset ( $_POST['editBc_pesan'] ) )
   $edit = editData($data); // var_dump($edit);
 }
 
-
-
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
 
