@@ -2,8 +2,7 @@
   
   require_once __DIR__ . "/config/koneksi.php";
   require_once __DIR__ . "/function/function.php";
-  require_once __DIR__ . "/function/insert_data.php";
-  require_once __DIR__ . "/function/hapus_data.php";
+  require_once __DIR__ . "/function/sanitaze.php";
   require_once __DIR__ . "/bagian/main_header.php";
   require_once __DIR__ . "/bagian/aside.php";
   require_once __DIR__ . "/Model/Pesan.php";

@@ -12,14 +12,34 @@ if ( isset( $_POST['bc_pesan'] ) )
 
   $group = implode(', ', $group);  $data = array ( "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
 
-  $result = tambahData($data);
+  if(tambahData($data)){
+    $error = array(
+      "pesan" => "Gagal menambah template pesan",
+      "class" => "danger"
+    );
+  }else{
+    $error = array(
+      "pesan" => "Berhasil menambah template pesan",
+      "class" => "success"
+    );
+  }
 }
 
 // fungsi hapus
 if ( isset( $_POST['id_hapus'] ) )
 {
   $data = array("table" => "bc_pesan", "id" => $id = $_POST['id_hapus']);
-  hapus_data($data);
+  if(hapusData($data)){
+    $error = array(
+      "pesan" => "Gagal menghapus template pesan",
+      "class" => "danger"
+    );
+  }else{
+    $error = array(
+      "pesan" => "Berhasil menghapus template pesan",
+      "class" => "success"
+    );
+  }
 }
 
 // edit data bc pesan
@@ -34,11 +54,29 @@ if( isset ( $_POST['editBc_pesan'] ) )
 
   $group = implode(', ', $group);  
   $data = array ( "id" => $_POST['id'], "id_pesan" => "$_POST[pesan]", "id_group" => "$group", "waktu" => "$_POST[waktu]", "table" => "bc_pesan");
-  $edit = editData($data); // var_dump($edit);
+  if(editData($data)){
+    $error = array(
+      "pesan" => "Gagal mengedit template pesan",
+      "class" => "danger"
+    );
+  }else{
+    $error = array(
+      "pesan" => "Berhasil mengedit template pesan",
+      "class" => "success"
+    );
+  }
 }
 
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
+
+<div class="container-xxl flex-grow-1 container-p-y">
+<?php if(isset($error)) { ?>
+  <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light fade" role="alert">
+    <strong><?= $error['pesan']; ?></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
 
 <!-- modal tambah data -->
 

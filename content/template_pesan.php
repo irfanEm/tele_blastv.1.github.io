@@ -2,19 +2,18 @@
   // jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
-    $data = array("judul_pesan" => "$_POST[judul_pesan]", "isi_pesan" => "$_POST[isi_pesan]", "table" => "template_pesan");
+    $daber = array_map("sanitize", $_POST);
+    $data = array("judul_pesan" => "$daber[judul_pesan]", "isi_pesan" => "$daber[isi_pesan]", "table" => "template_pesan");
     if(tambahData($data)){
-      echo "gagal";
-      // $error = array(
-      //   "pesan" => "Gagal menambah template pesan",
-      //   "class" => "danger"
-      // );
+      $error = array(
+        "pesan" => "Gagal menambah template pesan",
+        "class" => "danger"
+      );
     }else{
-      echo "berhasil";
-      // $error = array(
-      //   "pesan" => "Berhasil menambah template pesan",
-      //   "class" => "success"
-      // );
+      $error = array(
+        "pesan" => "Berhasil menambah template pesan",
+        "class" => "success"
+      );
     }
     
   }
@@ -40,7 +39,8 @@
   // update data
   if ( isset( $_POST['editData'] ) )
   {
-    $data = array("id" => "$_POST[id]", "judul_pesan" => "$_POST[judul_pesan]", "isi_pesan" => "$_POST[isi_pesan]", "table" => "template_pesan");
+    $daber = array_map("sanitize", $_POST);
+    $data = array("id" => "$_POST[id]", "judul_pesan" => "$daber[judul_pesan]", "isi_pesan" => "$daber[isi_pesan]", "table" => "template_pesan");
     if(editData($data)){
       $error = array(
         "pesan" => "Gagal mengedit template pesan",
@@ -58,7 +58,7 @@
 <!-- container pembungkus utama -->
 <div class="container-xxl flex-grow-1 container-p-y">
 <?php if(isset($error)) { ?>
-  <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light" role="alert">
+  <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light fade" role="alert">
     <strong><?= $error['pesan']; ?></strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>

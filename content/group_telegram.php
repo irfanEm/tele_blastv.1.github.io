@@ -1,26 +1,68 @@
 <?php
+
+require_once __DIR__ . "/../function/sanitaze.php";
   //jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {
-    $data = array( "nama_group" => "$_POST[nama_group]", "id_group" => "$_POST[id_group]", "username_group" => "$_POST[username_group]", "table" => "group_tele");
-    $insert = tambahData($data);
+    $daber = array_map("sanitize", $_POST);
+    $data = array( "nama_group" => "$daber[nama_group]", "id_group" => "$daber[id_group]", "username_group" => "$daber[username_group]", "table" => "group_tele");
+    if(tambahData($data)){
+      $error = array(
+        "pesan" => "Gagal menambah template pesan",
+        "class" => "danger"
+      );
+    }else{
+      $error = array(
+        "pesan" => "Berhasil menambah template pesan",
+        "class" => "success"
+      );
+    }
   }
 
   // fungsi hapus 
   if ( isset( $_POST['id_hapus'] ) )
   {
     $data = array("id" => $_POST['id_hapus'], "table" => "group_tele");
-    $hapus = hapusData($data);
+    if(hapusData($data)){
+      $error = array(
+        "pesan" => "Gagal menghapus template pesan",
+        "class" => "danger"
+      );
+    }else{
+      $error = array(
+        "pesan" => "Berhasil menghapus template pesan",
+        "class" => "success"
+      );
+    }
   }
     
   if( isset($_POST['editData']))
   {
-    $data = array("id" => "$_POST[id]",  "nama_group" => "$_POST[nama_group]", "id_group" => "$_POST[id_group]", "username_group" => "$_POST[username_group]", "table" => "group_tele");
-    $edit = editData($data);
+    $daber = array_map("sanitize", $_POST);
+    $data = array("id" => "$_POST[id]",  "nama_group" => "$daber[nama_group]", "id_group" => "$daber[id_group]", "username_group" => "$daber[username_group]", "table" => "group_tele");
+    if(editData($data)){
+      $error = array(
+        "pesan" => "Gagal mengedit template pesan",
+        "class" => "danger"
+      );
+    }else{
+      $error = array(
+        "pesan" => "Berhasil mengedit template pesan",
+        "class" => "success"
+      );
+    }
   }
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
+
+<?php if(isset($error)) { ?>
+  <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light" role="alert">
+    <strong><?= $error['pesan']; ?></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
+
 <!-- modal-input -->
 <div class="col-lg-4 col-md-6">
   <!-- <small class="text-light fw-semibold">Default</small> -->
