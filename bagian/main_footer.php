@@ -1,8 +1,8 @@
-</div>
+<!-- </div> -->
 
 <!-- Overlay -->
-<div class="layout-overlay layout-menu-toggle"></div>
-</div>
+<!-- <div class="layout-overlay layout-menu-toggle"></div>
+</div> -->
 <!-- / Layout wrapper -->
 
 <!-- <div class="buy-now">
@@ -11,8 +11,8 @@
   target="_blank"
   class="btn btn-danger btn-buy-now"
   >Upgrade to Pro</a
-> -->
-</div>
+>
+</div> -->
 
 
 <!-- Core JS -->

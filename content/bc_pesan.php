@@ -70,7 +70,6 @@ if( isset ( $_POST['editBc_pesan'] ) )
 ?>
 <div class="container-xxl flex-grow-1 container-p-y">
 
-<div class="container-xxl flex-grow-1 container-p-y">
 <?php if(isset($error)) { ?>
   <div class="alert alert-<?=$error['class'] ?> alert-dismissible border border-light fade" role="alert">
     <strong><?= $error['pesan']; ?></strong>

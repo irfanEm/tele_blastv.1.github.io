@@ -2,9 +2,7 @@
 session_start();
   // $base_url = "http://localhost/tele_blastv.1.github.io/";
   $base_url = "http://192.168.1.64/tele_blastv.1.github.io/";
-if (isset($_SESSION["error"])){
-  echo "error : " . $_SESSION["error"];
-}
+  
 ?>
 <!DOCTYPE html>
 
@@ -65,6 +63,10 @@ if (isset($_SESSION["error"])){
     <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css" />
+    <!-- Helpers -->
+    <script src="assets/vendor/js/helpers.js"></script>
 
     <!-- Helpers -->
     <script src="assets/vendor/js/helpers.js"></script>
@@ -85,6 +87,6 @@ if (isset($_SESSION["error"])){
 
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
+    <!-- <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container"> -->
         <!-- Menu -->
