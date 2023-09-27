@@ -1,8 +1,5 @@
 <?php
 session_start();
-  // $base_url = "http://localhost/tele_blastv.1.github.io/";
-  $base_url = "http://192.168.1.64/tele_blastv.1.github.io/";
-  
 ?>
 <!DOCTYPE html>
 
