@@ -24,8 +24,10 @@ function kirimHasil($hasil)
   $_SESSION['username'] = $hasil->username;
   $_SESSION['login'] = true;
   $dataLogin = array("username"=>"$_SESSION[username]", "login"=>"$_SESSION[login]");
-  setLogin($dataLogin);
+  return $dataLogin;
 }
+
+$dataLogin = kirimHasil($hasil);
 
 function setLogin($dataLogin)
 {
