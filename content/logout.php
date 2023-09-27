@@ -1,5 +1,10 @@
 <?php
-header('dashboard.php');
+
+require_once __DIR__ . "/../function/function.php";
+$dataLogin = array("username"=>"null", "login"=>false);
+setLogin($dataLogin);
+
+// header('dashboard.php');
 // var_dump($_GET['url']);
 // include "function/function.php";
 //   $url= parseURL();

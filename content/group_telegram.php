@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../function/sanitaze.php";
+require_once __DIR__ . "/../function/function.php";
   //jika tombol tambah diklik
   if ( isset( $_POST['tambah'] ) && $_POST['tambah'] == 1 )
   {

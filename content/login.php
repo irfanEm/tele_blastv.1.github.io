@@ -1,16 +1,20 @@
     <?php
-      $_SESSION["login"] == false;
-      if(isset($_POST['username']) || isset($_POST['password'])) {
+
+    require_once __DIR__ . "/../function/function.php";
+
+      if(isset($_POST['username']) || isset($_POST['password'])) 
+      {
 
         $daber = array_map("sanitize", $_POST);
-        // var_dump(cekUser($daber));
         $hasil = cekUser($daber); 
-        var_dump($hasil->username);
-        if ($hasil != null) {$_SESSION["login"] == true;}
+        //var_dump($hasil);
+        // var_dump($hasil->username);
+        if ($hasil != null) { var_dump($hasil->username); kirimHasil($hasil);}
+        // var_dump(kirimHasil($hasil));
       }
-      var_dump($_SESSION);
-      // session_destroy();
-      // session_unset();
+
+      // var_dump($_SESSION);
+
       ?>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
@@ -77,7 +81,7 @@
               <h4 class="mb-2 text-capitalize">selamat datang</h4>
               <p class="mb-4 text-capitalize">silahkan masuk ke akunmu</p>
 
-              <form id="formAuthentication" class="mb-3" action="../index.php" method="POST">
+              <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Username</label>
                   <input type="text" class="form-control" id="email" name="username" placeholder="Enter your email or username" autofocus/>

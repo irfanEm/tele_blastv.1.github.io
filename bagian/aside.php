@@ -112,5 +112,13 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">APLIKASI</span>
             </li>
+
+            <!-- BC Pesan -->
+            <li class="menu-item <?php echo $active = ($url[0]=='logout') ? 'active' : ''; ?>">
+              <a href="<?= $base_url; ?>logout" class="menu-link btn btn-danger">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Logout</div>
+              </a>
+            </li>
           </ul>
     </aside>

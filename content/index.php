@@ -46,7 +46,7 @@ require_once __DIR__ . "/../BusinessLogic/getIdGroup.php";
                 }
                 // var_dump($url);
                 if (isset($url) && $url != null){
-                    $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data", "404", "bcPesan"];
+                    $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data", "404", "bcPesan", "logout"];
                     if( in_array($url[0], $menu) )
                     {
                         require_once __DIR__ . "/".$url[0].".php";
