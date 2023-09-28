@@ -7,8 +7,8 @@ require_once __DIR__ . "/function/function.php";
 
 
   $url= parseURL();
-  $dataLogin = setLogin($data); // var_dump($dataLogin);
-  $dataLogin["login"] = true;
+  // $dataLogin = setLogin($data); // var_dump($dataLogin);
+  $dataLogin["login"] = false;
 
   if(isset($dataLogin["login"]) && $dataLogin["login"] == true) {
     require_once __DIR__ . "/content/index.php";

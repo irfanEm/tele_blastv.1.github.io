@@ -19,20 +19,17 @@ function sanitize($data)
     return $data;
 }
 
-function kirimHasil($hasil)
+function setLogin($hasil)
 {
-  $_SESSION['username'] = $hasil->username;
-  $_SESSION['login'] = true;
-  $dataLogin = array("username"=>"$_SESSION[username]", "login"=>"$_SESSION[login]");
-  return $dataLogin;
+  //$username = $hasil->username;
+  $login = true;
+  //$dataLogin = array("username"=>"$username", "login"=>"$login");
 }
 
-$dataLogin = kirimHasil($hasil);
-
-function setLogin($dataLogin)
-{
-  return $dataLogin;
-}
+// function getLogin($data)
+// {
+//   return $data;
+// }
 
 function parseURL(){
     if(isset($_GET['url'])) {

@@ -7,9 +7,14 @@
 
         $daber = array_map("sanitize", $_POST);
         $hasil = cekUser($daber); 
+        var_dump($hasil);
+        // $login = setLogin($hasil); // var_dump($login);
+
+        // $dataLogin = getLogin(); var_dump($dataLogin);
+
         //var_dump($hasil);
         // var_dump($hasil->username);
-        if ($hasil != null) { var_dump($hasil->username); kirimHasil($hasil);}
+        // if ($hasil != null) { var_dump($hasil->username); setLogin($hasil);}
         // var_dump(kirimHasil($hasil));
       }
 
