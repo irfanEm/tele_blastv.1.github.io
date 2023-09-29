@@ -8,7 +8,8 @@
         $daber = array_map("sanitize", $_POST);
         $hasil = cekUser($daber); 
         if($hasil != null){
-          $login = true;
+          $_SESSION['username'] = $hasil->username;
+          $_SESSION['login'] = true;
         }
       
         // $login = setLogin($hasil); // var_dump($login);
