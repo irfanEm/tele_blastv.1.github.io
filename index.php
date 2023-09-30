@@ -24,7 +24,7 @@ require_once __DIR__ . "/function/function.php";
 // $url= parseURL();
 
 // var_dump($url);
-var_dump($_SESSION['username']);
+var_dump($_GET);
 
 if($_SESSION['login'] != null) {
   require_once __DIR__ . "/content/index.php";

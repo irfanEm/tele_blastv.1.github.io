@@ -41,9 +41,9 @@ require_once __DIR__ . "/../BusinessLogic/getIdGroup.php";
                 //   header("Location:http://localhost/tele_blastv.1.github.io/404");
                 //   $url[0] = "404";
                 // }
-                if($url == null){
                     require_once __DIR__ . "/group_telegram.php";
-                }
+                // if($url == null){
+                // }
                 // var_dump($url);
                 if (isset($url) && $url != null){
                     $menu = ["main", "group_telegram", "template_pesan", "bc_pesan", "menu", "edit_data", "404", "bcPesan", "logout"];

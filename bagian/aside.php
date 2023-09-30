@@ -87,7 +87,7 @@
 
             <!-- Group Telegram -->
             <li class="menu-item <?php echo $active = ($url[0]=='group_telegram') ? 'active' : ''; ?>">
-              <a href="<?= $base_url; ?>group_telegram" class="menu-link">
+              <a href="<?= $base_url; ?>?url=group_telegram" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Group Telegram</div>
               </a>
@@ -95,7 +95,7 @@
 
             <!-- Template Pesan -->
             <li class="menu-item <?php echo $active = ($url[0]=='template_pesan') ? 'active' : ''; ?>">
-              <a href="<?= $base_url; ?>template_pesan" class="menu-link">
+              <a href="<?= $base_url; ?>?url=template_pesan" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Template Pesan</div>
               </a>
@@ -103,7 +103,7 @@
 
             <!-- BC Pesan -->
             <li class="menu-item <?php echo $active = ($url[0]=='bc_pesan') ? 'active' : ''; ?>">
-              <a href="<?= $base_url; ?>bc_pesan" class="menu-link">
+              <a href="<?= $base_url; ?>?url=bc_pesan" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Broadcast Pesan</div>
               </a>

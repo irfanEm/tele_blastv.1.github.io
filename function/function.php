@@ -19,25 +19,33 @@ function sanitize($data)
     return $data;
 }
 
-function setLogin($hasil)
+function getUrl($url)
 {
-  //$username = $hasil->username;
-  $login = true;
-  //$dataLogin = array("username"=>"$username", "login"=>"$login");
+    $page = $url['url'] ? $url['url'] : '';
+    $act = $url['act'] ? $url['act'] : '';
+    $id = $url['id'] ? $url['id'] : '';
+
+    
 }
+// function setLogin($hasil)
+// {
+//   $username = $hasil->username;
+//   $login = true;
+//   $dataLogin = array("username"=>"$username", "login"=>"$login");
+// }
 
 // function getLogin($data)
 // {
 //   return $data;
 // }
 
-function parseURL(){
-    if(isset($_GET['url'])) {
-      $url = rtrim($_GET['url'], "/");
-      $url = filter_var($url, FILTER_SANITIZE_URL);
-      $url = explode("/", $url);
-      return $url;
-    }
-  }
+// function parseURL(){
+//     if(isset($_GET['url'])) {
+//       $url = rtrim($_GET['url'], "/");
+//       $url = filter_var($url, FILTER_SANITIZE_URL);
+//       $url = explode("/", $url);
+//       return $url;
+//     }
+//   }
 
-  $url= parseURL();
+//   $url= parseURL();
