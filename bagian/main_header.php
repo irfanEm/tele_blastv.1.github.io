@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$_SESSION["login"] = false;
 ?>
 <!DOCTYPE html>
 
@@ -47,7 +49,7 @@ session_start();
       rel="stylesheet"
     />
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="<?= __DIR__; ?>../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="<?= __DIR__ ?>../assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
