@@ -41,19 +41,19 @@ require_once __DIR__ . "/../BusinessLogic/getIdGroup.php";
                 //   header("Location:http://localhost/tele_blastv.1.github.io/404");
                 //   $url[0] = "404";
                 // }
-                if(isset($_GET['url']) && $_GET['url'] = "group_telegram"){
+                // if(isset($_GET['url']) && $_GET['url'] = "group_telegram"){
 
-                    echo "group_telegram";
-                    require_once __DIR__ . "/group_telegram.php";
-                } elseif(isset($_GET['url']) && $_GET['url'] = "template_pesan") {
+                //     echo "group_telegram";
+                //     require_once __DIR__ . "/group_telegram.php";
+                // } elseif(isset($_GET['url']) && $_GET['url'] = "template_pesan") {
 
-                    echo "template_pesan";
-                    require_once __DIR__ . "/template_pesan.php";
-                } elseif(isset($_GET['url']) && $_GET['url'] = "bc_pesan") {
+                //     echo "template_pesan";
+                //     require_once __DIR__ . "/template_pesan.php";
+                // } elseif(isset($_GET['url']) && $_GET['url'] = "bc_pesan") {
 
-                    echo "bc pesan";
-                    require_once __DIR__ . "/bc_pesan.php";
-                }
+                //     echo "bc pesan";
+                //     require_once __DIR__ . "/bc_pesan.php";
+                // }
                 // if($url == null){
                 // }
                 // var_dump($url);

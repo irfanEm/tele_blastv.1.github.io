@@ -1,9 +1,9 @@
 <?php
 
 // require public
-require_once __DIR__ . "/bagian/main_header.php";
 require_once __DIR__ . "/config/koneksi.php";
 require_once __DIR__ . "/function/function.php";
+require_once __DIR__ . "/bagian/main_header.php";
 
 require_once __DIR__ . "/Model/Pesan.php";
 require_once __DIR__ . "/Model/Group.php";
@@ -45,19 +45,19 @@ require_once __DIR__ . "/BusinessLogic/getIdGroup.php";
                 //   header("Location:http://localhost/tele_blastv.1.github.io/404");
                 //   $url[0] = "404";
                 // }
-                if(isset($_GET['url']) && $_GET['url'] = "group_telegram"){
+                // if($_GET['url'] = "group_telegram"){
 
-                    echo "group_telegram";
-                    // require_once __DIR__ . "/content/group_telegram.php";
-                } elseif(isset($_GET['url']) && $_GET['url'] = "template_pesan") {
+                //     echo "group_telegram";
+                //     // require_once __DIR__ . "/content/group_telegram.php";
+                // } elseif($_GET['url'] = "template_pesan") {
 
-                    echo "template_pesan";
-                    // require_once __DIR__ . "/content/template_pesan.php";
-                } elseif(isset($_GET['url']) && $_GET['url'] = "bc_pesan") {
+                //     echo "template_pesan";
+                //     // require_once __DIR__ . "/content/template_pesan.php";
+                // } elseif($_GET['url'] = "bc_pesan") {
 
-                    echo "bc pesan";
-                    // require_once __DIR__ . "/content/bc_pesan.php";
-                }
+                //     echo "bc pesan";
+                //     // require_once __DIR__ . "/content/bc_pesan.php";
+                // }
                 // if($url == null){
                 // }
                 // var_dump($url);
@@ -69,9 +69,27 @@ require_once __DIR__ . "/BusinessLogic/getIdGroup.php";
                 //     }
                     
                 // }
-                // var_dump($_GET);
+                // var_dump($_GET["url"]);
+                // var_dump($_GET['content']);
 
-                        // var_dump($_GET['content']);
+                if($_GET['url'] == "group_telegram"){
+
+                    require_once __DIR__ . "/content/group_telegram.php";
+
+                } elseif($_GET['url'] == "template_pesan") {
+
+                    require_once __DIR__ . "/content/template_pesan.php";
+
+                } elseif($_GET['url'] == "bc_pesan") {
+
+                    require_once __DIR__ . "/content/bc_pesan.php";
+
+                } elseif($_GET['url'] == "logout") {
+
+                    require_once __DIR__ . "/content/logout.php";
+                    
+                }
+
                 ?>
             </div>
         </div>

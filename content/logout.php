@@ -2,7 +2,7 @@
 
 session_destroy();
 session_unset();
-header('Location: login.php');
+header('Location: ' . $base_url . '/content/login.php');
 
 // header('dashboard.php');
 // var_dump($_GET['url']);
