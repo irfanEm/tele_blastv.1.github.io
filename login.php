@@ -1,6 +1,9 @@
     <?php
 
-    require_once __DIR__ . "/../function/function.php";
+      require_once __DIR__ . "/config/koneksi.php";
+      require_once __DIR__ . "/config/config.php";
+      require_once __DIR__ . "/function/function.php";
+      require_once __DIR__ . "/bagian/main_header.php";
 
       if(isset($_POST['username']) || isset($_POST['password'])) 
       {
@@ -8,8 +11,8 @@
         $daber = array_map("sanitize", $_POST);
         $hasil = cekUser($daber); 
         if($hasil != null){
-          $_SESSION['username'] = $hasil->username;
-          $_SESSION['login'] = true;
+          $_SESSION["username"] = $hasil->username;
+          $_SESSION["login"] = true;
         }
       
         // $login = setLogin($hasil); // var_dump($login);
@@ -20,10 +23,8 @@
         // var_dump($hasil->username);
         // if ($hasil != null) { var_dump($hasil->username); setLogin($hasil);}
         // var_dump(kirimHasil($hasil));
+        header("Location: $base_url");
       }
-
-      // var_dump($_SESSION);
-
       ?>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
@@ -124,3 +125,7 @@
         </div>
       </div>
     </div>
+
+<?php
+
+    require_once __DIR__ . "/bagian/main_header.php";

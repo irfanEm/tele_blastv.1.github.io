@@ -1,5 +1,7 @@
 <?php
-
+if ($_SESSION["login"] == true)
+{
+  
 // fungsi input
 if ( isset( $_POST['bc_pesan'] ) )
 {
@@ -301,3 +303,8 @@ if( isset ( $_POST['editBc_pesan'] ) )
   </div>
 </div>
           <!-- akhir content utama -->
+<?php }else { ?>
+
+  <p>silahkan login dahulu</p>
+
+<?PHp } ?>
