@@ -1,17 +1,30 @@
     <?php
+    
+    // require public
+    require_once __DIR__ . "/config/koneksi.php";
+    require_once __DIR__ . "/function/function.php";
+    require_once __DIR__ . "/bagian/main_header.php";
 
-    require_once __DIR__ . "/../function/function.php";
-
-      if(isset($_POST['username']) || isset($_POST['password'])) 
+      if(isset($_POST['username']) && isset($_POST['password'])) 
       {
 
         $daber = array_map("sanitize", $_POST);
         $hasil = cekUser($daber); 
         if($hasil != null){
-          $_SESSION['username'] = $hasil->username;
-          $_SESSION['login'] = true;
+
+          $_SESSION["username"] = $hasil->username;
+          $_SESSION["login"] = true;
+          var_dump($hasil->username);
+
+        } else {
+
+          $_SESSION["username"] = $_POST["username"];
+          $_SESSION["login"] = false;
+
         }
-      
+
+        var_dump($_SESSION["login"], $_SESSION["username"]);
+
         // $login = setLogin($hasil); // var_dump($login);
 
         // $dataLogin = getLogin(); var_dump($dataLogin);
@@ -22,7 +35,7 @@
         // var_dump(kirimHasil($hasil));
       }
 
-      // var_dump($_SESSION);
+      // var_dump($_POST['username']);
 
       ?>
     <div class="container-xxl">
