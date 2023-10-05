@@ -15,6 +15,7 @@
           $_SESSION["username"] = $hasil->username;
           $_SESSION["login"] = true;
           var_dump($hasil->username);
+          echo "window.location.href = '$base_url'";
 
         } else {
 
@@ -33,6 +34,7 @@
         // var_dump($hasil->username);
         // if ($hasil != null) { var_dump($hasil->username); setLogin($hasil);}
         // var_dump(kirimHasil($hasil));
+
       }
 
       // var_dump($_POST['username']);
