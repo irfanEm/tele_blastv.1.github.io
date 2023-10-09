@@ -1,30 +1,40 @@
     <?php
     
     // require public
-    require_once __DIR__ . "/config/koneksi.php";
-    require_once __DIR__ . "/function/function.php";
     require_once __DIR__ . "/bagian/main_header.php";
+    require_once __DIR__ . "/config/koneksi.php";
+    require_once __DIR__ . "/config/config.php";
+    require_once __DIR__ . "/function/function.php";
 
       if(isset($_POST['username']) && isset($_POST['password'])) 
       {
 
         $daber = array_map("sanitize", $_POST);
-        $hasil = cekUser($daber); 
+        $hasil = cekUser($daber);
+        // var_dump($hasil);
         if($hasil != null){
 
+          echo "isinya g null nih" . PHP_EOL;
+          $login = true;
+          $_SESSION["login"] = $login;
           $_SESSION["username"] = $hasil->username;
-          $_SESSION["login"] = true;
-          var_dump($hasil->username);
-          echo "window.location.href = '$base_url'";
+          var_dump($_SESSION);
+          // $_SESSION["login"] = true;
+          // var_dump($base_url);
+          echo "<script>window.location.replace = '$base_url'; </script>";
 
         } else {
 
-          $_SESSION["username"] = "";
-          $_SESSION["login"] = false;
+          echo "isinya null gais" . PHP_EOL;
+          $login = false;
+          $_SESSION["login"] = $login;
+          var_dump($_SESSION);
+          // $_SESSION["username"] = "";
+          // $_SESSION["login"] = false;
 
         }
 
-        var_dump($_SESSION["login"], $_SESSION["username"]);
+        // var_dump($_SESSION["login"], $_SESSION["username"]);
 
         // $login = setLogin($hasil); // var_dump($login);
 
@@ -37,7 +47,7 @@
 
       }
 
-      // var_dump($_POST['username']);
+      // var_dump($_SESSION['login']);
 
       ?>
     <div class="container-xxl">

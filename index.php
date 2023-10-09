@@ -1,5 +1,6 @@
 <?php
-$_SESSION["login"] = false;
+
+var_dump($_SESSION["login"]);
 require_once __DIR__ . "/config/config.php";
 if($_SESSION["login"] != true){
     header("Location: " . $base_url . "login.php");
