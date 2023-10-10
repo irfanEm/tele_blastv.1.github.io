@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../config/koneksi.php";
+require_once __DIR__ . "/../config/config.php";
 
 function cekUser($data)
 {
@@ -19,17 +20,32 @@ function sanitize($data)
     return $data;
 }
 
-function setLogin($hasil)
+function setSessionLogin($data)
 {
-  //$username = $hasil->username;
-  $login = true;
-  //$dataLogin = array("username"=>"$username", "login"=>"$login");
+  $daber = array_map("sanitize", $data);
+  $hasil = cekUser($daber);
+
+  if($hasil != null){
+    $_SESSION["login"] = true;
+    $_SESSION["username"] = $hasil->username;
+  } else {
+    $_SESSION["login"] = false;
+  }
+
+  return $_SESSION["login"];
+
 }
 
-// function getLogin($data)
-// {
-//   return $data;
-// }
+function redirect($result)
+{
+  global $base_url;
+
+  if($result == true){
+    header("Location: $base_url");
+    exit();
+  }
+  header("Location: " . $base_url ."login.php");
+}
 
 function parseURL(){
     if(isset($_GET['url'])) {

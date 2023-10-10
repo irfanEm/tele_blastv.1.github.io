@@ -8,48 +8,11 @@
 
       if(isset($_POST['username']) && isset($_POST['password'])) 
       {
-
-        $daber = array_map("sanitize", $_POST);
-        $hasil = cekUser($daber);
-        // var_dump($hasil);
-        if($hasil != null){
-
-          echo "isinya g null nih" . PHP_EOL;
-          $login = true;
-          $_SESSION["login"] = $login;
-          $_SESSION["username"] = $hasil->username;
-          var_dump($_SESSION);
-          // $_SESSION["login"] = true;
-          // var_dump($base_url);
-          echo "<script>window.location.replace = '$base_url'; </script>";
-
-        } else {
-
-          echo "isinya null gais" . PHP_EOL;
-          $login = false;
-          $_SESSION["login"] = $login;
-          var_dump($_SESSION);
-          // $_SESSION["username"] = "";
-          // $_SESSION["login"] = false;
-
-        }
-
-        // var_dump($_SESSION["login"], $_SESSION["username"]);
-
-        // $login = setLogin($hasil); // var_dump($login);
-
-        // $dataLogin = getLogin(); var_dump($dataLogin);
-
-        //var_dump($hasil);
-        // var_dump($hasil->username);
-        // if ($hasil != null) { var_dump($hasil->username); setLogin($hasil);}
-        // var_dump(kirimHasil($hasil));
-
+        $result = setSessionLogin($_POST);
+        redirect($result);
       }
 
-      // var_dump($_SESSION['login']);
-
-      ?>
+    ?>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
