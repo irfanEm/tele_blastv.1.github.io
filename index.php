@@ -1,10 +1,6 @@
 <?php
 
-var_dump($_SESSION["login"]);
 require_once __DIR__ . "/config/config.php";
-if($_SESSION["login"] != true){
-    header("Location: " . $base_url . "login.php");
-}else{
 
     // require public
     require_once __DIR__ . "/bagian/main_header.php";
@@ -39,5 +35,5 @@ if($_SESSION["login"] != true){
     }
     
     require_once __DIR__ . "/bagian/main_footer.php";
-}
+
 ?>
