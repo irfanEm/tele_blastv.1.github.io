@@ -47,6 +47,11 @@ function redirect($result)
   header("Location: " . $base_url ."login.php");
 }
 
+// function validateLogin()
+// {
+//   $loged = setSessionLogin();
+// }
+
 function parseURL(){
     if(isset($_GET['url'])) {
       $url = rtrim($_GET['url'], "/");

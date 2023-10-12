@@ -1,5 +1,6 @@
     <?php
-    
+    session_start();
+
     // require public
     require_once __DIR__ . "/bagian/main_header.php";
     require_once __DIR__ . "/config/koneksi.php";
