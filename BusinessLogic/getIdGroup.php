@@ -44,21 +44,21 @@ function getIdGroup()
 // var_dump($hasil);
 
 // prepare go nangkap ID group heheheheh
-function searchNestedArray($array, $key) {
-    $result = array();
-    array_walk_recursive($array, function($value, $index) use ($key, &$result) {
-        if ($index == $key) {
-            array_push($result, $value);
-        }
-    });
-    return $result;
-}
+// function searchNestedArray($array, $key) {
+//     $result = array();
+//     array_walk_recursive($array, function($value, $index) use ($key, &$result) {
+//         if ($index == $key) {
+//             array_push($result, $value);
+//         }
+//     });
+//     return $result;
+// }
 
-$url = 'https://api.telegram.org/bot6598949420:AAHQ6JDapP7ujwdcXIglHBlslNuYCOUZ9wM/getUpdates'; // Ganti URL dengan URL yang sesuai
-$response = file_get_contents($url);
-$data = json_decode($response, true);
-// print_r($data);
+// $url = 'https://api.telegram.org/bot6598949420:AAHQ6JDapP7ujwdcXIglHBlslNuYCOUZ9wM/getUpdates'; // Ganti URL dengan URL yang sesuai
+// $response = file_get_contents($url);
+// $data = json_decode($response, true);
+// // print_r($data);
 
 
-$result = searchNestedArray($data, "id");
-var_dump($result); // Output: Array ( [0] => value )
+// $result = searchNestedArray($data, "id");
+// var_dump($result); // Output: Array ( [0] => value )
