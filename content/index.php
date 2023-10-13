@@ -17,6 +17,7 @@ require_once __DIR__ . "/../BusinessLogic/getIdGroup.php";
         <?php require_once __DIR__ . "/../bagian/aside.php"; ?>
         <!-- Menu -->
         <div class="layout-page">
+            <?php require_once __DIR__ . "/../bagian/navbar.php"; ?>
             <?php
             // require_once __DIR__ . "/bagian/header.php";
             // include "bagian/content.php";

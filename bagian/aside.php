@@ -1,5 +1,5 @@
     <?php require_once __DIR__ . "/../config/config.php"; ?>
-    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
@@ -111,14 +111,6 @@
 
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">APLIKASI</span>
-            </li>
-
-            <!-- BC Pesan -->
-            <li class="menu-item <?php echo $active = ($url[0]=='logout') ? 'active' : ''; ?>">
-              <a href="<?= $base_url; ?>logout.php" class="menu-link btn btn-danger">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Logout</div>
-              </a>
             </li>
           </ul>
     </aside>
