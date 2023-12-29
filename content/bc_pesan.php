@@ -204,7 +204,7 @@ if( isset ( $_POST['editBc_pesan'] ) )
                   <h6 class="mb-0 fw-normal text-wrap"><?= implode(", ",$groups); ?></h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="mb-0 fw-normal"><?= $data_bc['waktu']; ?></h6>
+                  <h6 class="mb-0 fw-normal" id="waktu<?= $n ?>"> <?= $data_bc['waktu']; ?> </h6>
                 </td>
                 <td class="border-bottom-0">
                     <a class="btn btn-sm btn-warning rounded rounded-pill mb-2 text-white"  data-bs-toggle="modal" data-bs-target="#updateData<?= $data_bc['id'];?>">
